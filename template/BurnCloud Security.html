@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security &amp; Privacy | Zero Logging | Open Source Verified | BurnCloud</title>
+<meta name="description" content="BurnCloud never logs your requests. Open source code on GitHub. Cryptographically verified deployments. Don't trust us — verify us.">
+<link rel="canonical" href="https://burncloud.com/security">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://burncloud.com/security">
+<meta property="og:title" content="Security &amp; Privacy | Zero Logging | BurnCloud">
+<meta property="og:description" content="BurnCloud never logs your requests. Open source code on GitHub. Cryptographically verified deployments. Don't trust us — verify us.">
+<meta property="og:site_name" content="BurnCloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Security &amp; Privacy | Zero Logging | BurnCloud">
+<meta name="twitter:description" content="BurnCloud never logs your requests. Open source, cryptographically verified. Don't trust us — verify us.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://burncloud.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Security", "item": "https://burncloud.com/security"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Does BurnCloud log my prompts or responses?","acceptedAnswer":{"@type":"Answer","text":"No. The gateway stores no prompts, responses, usage patterns, or IP addresses. Because the code is open source, you can search it for any logging or storage path and confirm there is none."}},
+    {"@type":"Question","name":"How can I verify what is running?","acceptedAnswer":{"@type":"Answer","text":"Call verify.burncloud.com to read the live version, commit, and build hash, then build the same commit yourself and compare the sha256 hash against what is deployed."}},
+    {"@type":"Question","name":"Can I self-host BurnCloud?","acceptedAnswer":{"@type":"Answer","text":"Yes. BurnCloud is a single Rust binary under an MIT license. Clone the repo, build it, and run it on your own infrastructure for full control."}},
+    {"@type":"Question","name":"How are suppliers verified?","acceptedAnswer":{"@type":"Answer","text":"Every supplier submits proof of an official API account, which BurnCloud verifies for authenticity, then runs regular sampling tests and removes any supplier that fails."}},
+    {"@type":"Question","name":"Is BurnCloud compliant for enterprise use?","acceptedAnswer":{"@type":"Answer","text":"BurnCloud Ltd. is UK registered and GDPR compliant. A data processing agreement is available, and a SOC2 report is available on request."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff;--surface:#f7f7f8;--border:#e5e5e5;--text:#0a0a0f;--muted:#6b6b7b;
+    --accent:#6366f1;--accent-hover:#4f46e5;--accent-tint:#eef2ff;
+    --green:#16a34a;--green-tint:#f0fdf4;--red:#dc2626;--code-bg:#0d0d0f;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --maxw:1000px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-weight:700;letter-spacing:-.025em;line-height:1.15;color:var(--text);}
+
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s;white-space:nowrap;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-hover);}
+  .btn-outline{background:var(--bg);color:var(--text);border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--muted);background:var(--surface);}
+  .btn-lg{padding:14px 26px;font-size:15px;border-radius:9px;}
+
+  nav.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  nav.site .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;letter-spacing:-.02em;}
+  .logo svg{width:20px;height:20px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a.link{font-size:14px;color:var(--muted);font-weight:500;transition:color .15s;}
+  .nav-links a.link:hover{color:var(--text);}
+  .ext{font-size:.85em;opacity:.7;}
+
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+
+  .shero{padding:64px 0 44px;}
+  .shero .eyebrow{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:18px;}
+  .shero h1{font-size:clamp(34px,5.5vw,54px);letter-spacing:-.035em;line-height:1.05;max-width:720px;}
+  .shero .sub{font-family:var(--mono);font-size:17px;color:var(--muted);margin-top:18px;}
+
+  /* terminal */
+  .terminal{background:var(--code-bg);border-radius:12px;font-family:var(--mono);font-size:13.5px;line-height:1.75;margin-top:34px;overflow:hidden;border:1px solid #1c1c20;box-shadow:0 18px 50px -16px rgba(0,0,0,.45);}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #1c1c20;}
+  .term-bar .tdot{width:11px;height:11px;border-radius:50%;background:#2c2c30;}
+  .term-title{margin-left:8px;color:#6b6b73;font-size:12px;letter-spacing:.06em;}
+  .term-body{padding:20px 20px 22px;min-height:200px;color:#d4d4d8;}
+  .term-line{white-space:pre-wrap;opacity:0;}
+  .term-line.shown{opacity:1;}
+  .term-line .prompt{color:#22c55e;}
+  .term-line .cmd{color:#fff;}
+  .term-line .key{color:#6b6b73;}
+  .term-line .val{color:#fff;}
+  .term-line .ok{color:#22c55e;font-weight:600;}
+  .term-line .dim{color:#6b6b73;}
+  .cursor{display:inline-block;width:8px;height:15px;background:#22c55e;vertical-align:text-bottom;margin-left:2px;animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .term-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center;}
+  .term-actions .note{font-size:13px;color:var(--muted);font-family:var(--mono);}
+
+  section.sec{padding:64px 0;border-top:1px solid var(--border);}
+  .sec-head{margin-bottom:28px;}
+  .sec-head h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:-.025em;}
+  .sec-head p{color:var(--muted);font-size:16px;margin-top:10px;max-width:640px;}
+  .lead{color:#3a3a45;max-width:680px;}
+
+  .checklist{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+  .checklist li{display:flex;align-items:flex-start;gap:12px;font-size:16px;}
+  .checklist li .ck{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--green-tint);color:var(--green);display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px;}
+  .verify-tip{margin-top:22px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;font-size:14px;color:var(--muted);font-family:var(--mono);line-height:1.65;}
+  .verify-tip code{color:var(--text);background:#fff;border:1px solid var(--border);border-radius:5px;padding:1px 6px;}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  .info-card{border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .info-card h3{font-size:17px;margin-bottom:8px;}
+  .info-card p{font-size:14px;color:var(--muted);}
+
+  /* architecture */
+  .flow{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap;margin-top:12px;}
+  .flow-node{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 22px;text-align:center;min-width:150px;display:flex;flex-direction:column;justify-content:center;}
+  .flow-node.verified{border-color:var(--green);background:var(--green-tint);}
+  .flow-node .fn-title{font-weight:600;font-size:15px;}
+  .flow-node .fn-sub{font-size:12px;color:var(--muted);margin-top:4px;font-family:var(--mono);}
+  .flow-node.verified .fn-sub{color:var(--green);}
+  .flow-arrow{display:flex;align-items:center;padding:0 14px;color:var(--muted);font-size:18px;}
+  .flow-note{text-align:center;margin-top:26px;font-family:var(--mono);font-size:14px;color:var(--muted);}
+  .flow-note strong{color:var(--text);font-weight:500;}
+
+  /* steps */
+  .vsteps{list-style:none;counter-reset:v;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);margin-top:8px;}
+  .vsteps li{counter-increment:v;display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .vsteps li::before{content:counter(v,decimal-leading-zero);font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);flex:0 0 auto;width:32px;padding-top:2px;}
+  .vsteps li .vt{font-weight:600;font-size:16px;}
+  .vsteps li .vd{color:var(--muted);font-size:14px;margin-top:2px;}
+
+  .compliance{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .compliance li{display:flex;align-items:center;gap:12px;font-size:15px;padding:14px 18px;border:1px solid var(--border);border-radius:10px;}
+  .compliance li .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+
+  .faq{max-width:760px;}
+  .faq details{border-bottom:1px solid var(--border);}
+  .faq details:first-child{border-top:1px solid var(--border);}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:16px;font-weight:600;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .sign{flex:0 0 auto;color:var(--accent);font-size:20px;line-height:1;transition:transform .25s;}
+  .faq details[open] summary .sign{transform:rotate(45deg);}
+  .faq .ans{padding:0 36px 22px 0;color:var(--muted);font-size:15px;line-height:1.7;}
+  .faq .ans code{font-family:var(--mono);color:var(--text);}
+
+  .ctasec{background:#0a0a0c;color:#fff;text-align:center;padding:72px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.025em;color:#fff;}
+  .ctasec .repo{font-family:var(--mono);font-size:14px;color:#6b6b73;margin-top:16px;}
+  .ctasec .btnrow{margin-top:26px;}
+  .ctasec .btn-ghost{background:transparent;color:#fff;border-color:#2c2c30;}
+  .ctasec .btn-ghost:hover{border-color:#52525b;background:#1c1c20;}
+
+  footer{border-top:1px solid var(--border);padding:32px 0;}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .fleft{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px;}
+  footer .flinks{display:flex;gap:24px;font-size:14px;color:var(--muted);}
+  footer .flinks a:hover{color:var(--text);}
+
+  @media (max-width:760px){
+    .twocol{grid-template-columns:1fr;}
+    .flow{flex-direction:column;align-items:center;}
+    .flow-node{width:100%;max-width:300px;}
+    .flow-arrow{transform:rotate(90deg);padding:8px 0;}
+    .nav-links a.link.hide-sm{display:none;}
+    .nav-links{gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site" aria-label="Primary">
+  <div class="wrap">
+    <a class="logo" href="BurnCloud Landing Page (Light).html" aria-label="BurnCloud home">
+      <svg viewBox="0 0 467 467" aria-hidden="true"><defs><linearGradient id="fg" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.78,179.95,-222.488,-0.964,234.62,167.69)"><stop offset="0" stop-color="#f7b52c"></stop><stop offset="1" stop-color="#e95513"></stop></linearGradient></defs><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud
+    </a>
+    <div class="nav-links">
+      <a class="link" href="BurnCloud Models Hub.html">Models</a>
+      <a class="link" href="BurnCloud Pricing.html">Pricing</a>
+      <a class="link hide-sm" href="#">GitHub <span class="ext">&#8599;</span></a>
+      <a class="btn btn-primary" href="#">Start Free &#8594;</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <a href="BurnCloud Landing Page (Light).html">Home</a>
+    <span class="sep">/</span>
+    <span class="cur">Security</span>
+  </div>
+</nav>
+
+<main>
+  <section class="shero" aria-labelledby="s-h1">
+    <div class="wrap">
+      <div class="eyebrow">Security &amp; Privacy</div>
+      <h1 id="s-h1">Security you can verify, not just trust.</h1>
+      <p class="sub">Don't trust us. Verify us.</p>
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+          <span class="term-title">verify.burncloud.com</span>
+        </div>
+        <div class="term-body" id="term"></div>
+      </div>
+      <div class="term-actions">
+        <a href="#" class="btn btn-outline">View on GitHub <span class="ext">&#8599;</span></a>
+        <span class="note">Build it yourself and compare hashes.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="log-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="log-h2">Zero request logging</h2></div>
+      <p class="lead" style="margin-bottom:22px;">The gateway is a pass-through. It never persists a single byte of your traffic. We never store:</p>
+      <ul class="checklist">
+        <li><span class="ck">&#10003;</span><span>Your prompts</span></li>
+        <li><span class="ck">&#10003;</span><span>Your responses</span></li>
+        <li><span class="ck">&#10003;</span><span>Your API usage patterns</span></li>
+        <li><span class="ck">&#10003;</span><span>Your IP address</span></li>
+      </ul>
+      <div class="verify-tip">
+        How to verify: search our codebase for <code>log</code> or <code>store</code> — you won't find any request-logging path. The proof is in the source, not in this sentence.
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="os-h2">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="os-h2">Fully open source</h2>
+        <p>Every line of code that routes your request is public. MIT licensed.</p>
+      </div>
+      <div class="twocol">
+        <div class="info-card"><h3>Read the routing</h3><p>See exactly how requests travel from your app to the official API — no hidden hops.</p></div>
+        <div class="info-card"><h3>Verify no logging</h3><p>Confirm for yourself there is no storage or telemetry code anywhere in the path.</p></div>
+        <div class="info-card"><h3>Build it yourself</h3><p>Compile from source and reproduce the exact hash that's running in production.</p></div>
+        <div class="info-card"><h3>Self-host if you prefer</h3><p>Run the whole gateway on your own infrastructure with one binary.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="arch-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="arch-h2">Direct API connection</h2></div>
+      <div class="flow">
+        <div class="flow-node"><div class="fn-title">Your App</div></div>
+        <div class="flow-arrow" aria-hidden="true">&#8594;</div>
+        <div class="flow-node verified"><div class="fn-title">BurnCloud</div><div class="fn-sub">&#10003; verified</div></div>
+        <div class="flow-arrow" aria-hidden="true">&#8594;</div>
+        <div class="flow-node"><div class="fn-title">Official API</div><div class="fn-sub">Claude / GPT / DeepSeek</div></div>
+        <div class="flow-arrow" aria-hidden="true">&#8594;</div>
+        <div class="flow-node"><div class="fn-title">Response</div></div>
+      </div>
+      <p class="flow-note"><strong>Your request travels one path. No third parties. No black boxes.</strong></p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="sup-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="sup-h2">How we verify suppliers</h2></div>
+      <ol class="vsteps">
+        <li><div><div class="vt">Submit official API account proof</div><div class="vd">Every supplier provides evidence of a genuine, first-party provider account.</div></div></li>
+        <li><div><div class="vt">BurnCloud verifies authenticity</div><div class="vd">We confirm the account is real and directly provisioned by the official provider.</div></div></li>
+        <li><div><div class="vt">Regular sampling tests</div><div class="vd">Live requests are sampled and checked to confirm the served model matches what was requested.</div></div></li>
+        <li><div><div class="vt">Automatic removal on failure</div><div class="vd">Any supplier that fails a sampling test is pulled from rotation immediately.</div></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="sh-h2">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="sh-h2">Don't trust us? Self-host.</h2>
+        <p>If you prefer complete control, deploy BurnCloud on your own server. Same gateway, your infrastructure.</p>
+      </div>
+      <a href="#" class="btn btn-outline">Self-host guide <span class="ext">&#8594;</span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="comp-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="comp-h2">Legal &amp; compliance</h2></div>
+      <ul class="compliance">
+        <li><span class="dot"></span><span><strong>BurnCloud Ltd.</strong> — UK registered company</span></li>
+        <li><span class="dot"></span><span>GDPR compliant</span></li>
+        <li><span class="dot"></span><span>Data processing agreement available</span></li>
+        <li><span class="dot"></span><span>SOC2 report available on request</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="faq-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="faq-h2">Frequently asked questions</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Does BurnCloud log my prompts or responses?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">No. The gateway stores no prompts, responses, usage patterns, or IP addresses. Because the code is open source, you can search it for any logging or storage path and confirm there is none.</div>
+        </details>
+        <details>
+          <summary>How can I verify what is running?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Call <code>verify.burncloud.com</code> to read the live version, commit, and build hash, then build the same commit yourself and compare the sha256 hash against what's deployed.</div>
+        </details>
+        <details>
+          <summary>Can I self-host BurnCloud?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Yes. BurnCloud is a single Rust binary under an MIT license. Clone the repo, build it, and run it on your own infrastructure for full control.</div>
+        </details>
+        <details>
+          <summary>How are suppliers verified?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Every supplier submits proof of an official API account, which BurnCloud verifies for authenticity, then runs regular sampling tests and removes any supplier that fails.</div>
+        </details>
+        <details>
+          <summary>Is BurnCloud compliant for enterprise use?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">BurnCloud Ltd. is UK registered and GDPR compliant. A data processing agreement is available, and a SOC2 report is available on request.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="ctasec" aria-labelledby="cta-h2">
+    <div class="wrap">
+      <h2 id="cta-h2">Read the source code.</h2>
+      <p class="repo">github.com/burncloud/burncloud</p>
+      <div class="btnrow"><a href="#" class="btn btn-ghost btn-lg">View on GitHub <span class="ext">&#8599;</span></a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fleft">
+      <svg viewBox="0 0 467 467" width="16" height="16" aria-hidden="true"><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud Ltd. UK · MIT License · © 2026
+    </div>
+    <nav class="flinks" aria-label="Footer">
+      <a href="BurnCloud Models Hub.html">Models</a>
+      <a href="BurnCloud Pricing.html">Pricing</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const term = document.getElementById('term');
+  const L = [
+    { html:'<span class="prompt">$</span> <span class="cmd">curl https://verify.burncloud.com</span>', type:true, after:240 },
+    { html:'&nbsp;', after:120 },
+    { html:'<span class="dim">Checking running version...</span>', after:460 },
+    { html:'&nbsp;', after:120 },
+    { html:'<span class="key">Version:</span>     <span class="val">v1.2.3</span>', after:110 },
+    { html:'<span class="key">Commit:</span>      <span class="val">a1b2c3d</span>', after:110 },
+    { html:'<span class="key">Build hash:</span>  <span class="val">sha256:7f3a…</span>', after:110 },
+    { html:'<span class="key">Status:</span>      <span class="ok">&#10003; VERIFIED</span>', after:320 },
+    { html:'&nbsp;', after:120 },
+    { html:'<span class="dim">This hash matches commit a1b2c3d</span>', after:110 },
+    { html:'<span class="dim">on github.com/burncloud/burncloud</span>', after:120, cursor:true }
+  ];
+  function typeLine(el, html, done){
+    const tmp=document.createElement('div'); tmp.innerHTML=html;
+    el.classList.add('shown'); const plain=tmp.textContent; let i=0;
+    const tick=()=>{ i++; el.textContent=plain.slice(0,i); if(i<plain.length) setTimeout(tick,16); else { el.innerHTML=html; done(); } };
+    if(plain.length) tick(); else { el.innerHTML=html; done(); }
+  }
+  function run(idx){
+    if(idx>=L.length) return;
+    const item=L[idx]; const line=document.createElement('div'); line.className='term-line'; term.appendChild(line);
+    const finish=()=>{ if(item.cursor){ const c=document.createElement('span'); c.className='cursor'; line.appendChild(c);} setTimeout(()=>run(idx+1), item.after||120); };
+    if(item.type) typeLine(line, item.html, finish); else { line.classList.add('shown'); line.innerHTML=item.html; finish(); }
+  }
+  setTimeout(()=>run(0), 400);
+</script>
+</body>
+</html>
