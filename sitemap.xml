@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://burncloud.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/models</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/pricing</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/security</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/privacy</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/terms</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/docs/quickstart</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://burncloud.com/models/gpt-5-5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/gpt-5-4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/claude-opus-4-7</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/claude-sonnet-4-6</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/claude-haiku-4-5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/gemini-3-1-pro</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/gemini-3-5-flash</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/grok-4-1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/deepseek-v4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/deepseek-v4-flash</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/deepseek-v3-2</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/deepseek-r1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/kimi-k2-6</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/qwen-3-5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/glm-5-1</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/step-3-5-flash</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/doubao-pro</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/models/minimax</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://burncloud.com/blog/cheapest-llm-api</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://burncloud.com/blog/deepseek-v4-api-guide</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://burncloud.com/compare/deepseek-vs-openai</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>

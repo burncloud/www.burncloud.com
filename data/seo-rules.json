@@ -1,0 +1,60 @@
+{
+  "url_rules": {
+    "no_html_extension": true,
+    "no_uppercase": true,
+    "no_underscores": true,
+    "use_hyphens": true,
+    "trailing_slash": false
+  },
+  "canonical_format": "https://burncloud.com{path}",
+  "title_templates": {
+    "home": "BurnCloud — Open Source LLM Gateway | Pay Per Token, No Commitment",
+    "models_hub": "AI Model Pricing Comparison 2026 | Claude, GPT, DeepSeek API | BurnCloud",
+    "model_page": "{model_name} API — ${input_price}/1M Tokens | BurnCloud",
+    "pricing": "LLM API Pricing Calculator 2026 | Compare Claude, GPT, DeepSeek | BurnCloud",
+    "blog": "{article_title} | BurnCloud Blog",
+    "compare": "{model_a} vs {model_b} — API Price & Quality Comparison | BurnCloud",
+    "alternative": "BurnCloud vs {competitor} — LLM API Alternative | BurnCloud"
+  },
+  "meta_description_templates": {
+    "home": "One API key for Claude, GPT, Gemini, DeepSeek and 20+ LLMs. Pay per token, no monthly fees, open source gateway. Start free.",
+    "models_hub": "Compare prices for Claude, GPT-5.4, Gemini, DeepSeek V3 and top Chinese LLMs. One API key, lowest cost, open source gateway.",
+    "model_page": "Access {model_name} API at ${input_price}/1M input tokens. OpenAI SDK compatible, open source gateway. Start free.",
+    "pricing": "Calculate your exact LLM API costs. Compare Claude, GPT, DeepSeek prices. Find the cheapest model for your workload.",
+    "blog": "{article_summary}",
+    "compare": "Compare {model_a} vs {model_b} API pricing, latency, context window, and quality. Find the best model for your use case."
+  },
+  "schema_types": {
+    "home": ["Organization", "WebSite"],
+    "models_hub": ["ItemList", "BreadcrumbList"],
+    "model_page": ["Product", "BreadcrumbList", "FAQPage"],
+    "pricing": ["BreadcrumbList", "FAQPage"],
+    "blog": ["Article", "BreadcrumbList"],
+    "compare": ["ComparisonTable", "BreadcrumbList", "FAQPage"]
+  },
+  "breadcrumb_templates": {
+    "home": [],
+    "models_hub": ["Home"],
+    "model_page": ["Home", "Models"],
+    "pricing": ["Home"],
+    "blog": ["Home", "Blog"],
+    "compare": ["Home", "Compare"]
+  },
+  "internal_link_rules": {
+    "min_links_per_page": 3,
+    "cluster_linking": true,
+    "related_models_count": 3,
+    "related_articles_count": 3
+  },
+  "faq_rules": {
+    "min_questions": 5,
+    "max_questions": 7,
+    "schema_required": true
+  },
+  "heading_rules": {
+    "h1_unique": true,
+    "h2_hierarchy": true,
+    "max_h1_length": 60,
+    "max_h2_length": 70
+  }
+}

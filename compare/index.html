@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare LLM Models Side by Side 2026 | Claude vs GPT vs DeepSeek | BurnCloud</title>
+<meta name="description" content="Compare Claude, GPT-5.5, DeepSeek V4 and more side by side. Price, speed, context window. Find the best model for your use case.">
+<link rel="canonical" href="./index.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://burncloud.com/compare">
+<meta property="og:title" content="Compare LLM Models Side by Side 2026 | BurnCloud">
+<meta property="og:description" content="Compare Claude, GPT-5.5, DeepSeek V4 and more side by side. Price, speed, context window. Find the best model for your use case.">
+<meta property="og:site_name" content="BurnCloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compare LLM Models Side by Side 2026 | BurnCloud">
+<meta name="twitter:description" content="Compare Claude, GPT, DeepSeek side by side. Price, speed, context. Find the best model for your use case.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://burncloud.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Compare", "item": "https://burncloud.com/compare"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I choose between two LLM models?","acceptedAnswer":{"@type":"Answer","text":"Compare on four axes: price per 1M input/output tokens, context window, speed, and suitability for your task. For high-volume or cost-sensitive work, a cheaper Chinese model usually wins; for the hardest reasoning, a frontier model may be worth the premium."}},
+    {"@type":"Question","name":"Can I use any compared model with one API key?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every model on this page is available through a single BurnCloud key over the OpenAI-compatible API. Switch models by changing only the model string."}},
+    {"@type":"Question","name":"Are the prices the official rates?","acceptedAnswer":{"@type":"Answer","text":"BurnCloud prices route to the same official APIs without reseller markup, so they sit at or just under official list prices."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff;--surface:#f7f7f8;--border:#e5e5e5;--text:#0a0a0f;--muted:#6b6b7b;
+    --accent:#6366f1;--accent-hover:#4f46e5;--accent-tint:#eef2ff;
+    --green:#16a34a;--green-tint:#f0fdf4;--red:#dc2626;--code-bg:#f4f4f5;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --maxw:1000px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-weight:700;letter-spacing:-.025em;line-height:1.12;color:var(--text);}
+
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s;white-space:nowrap;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-hover);}
+  .btn-lg{padding:14px 26px;font-size:15px;border-radius:9px;}
+
+  nav.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  nav.site .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;letter-spacing:-.02em;}
+  .logo svg{width:20px;height:20px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a.link{font-size:14px;color:var(--muted);font-weight:500;transition:color .15s;}
+  .nav-links a.link:hover{color:var(--text);}
+  .ext{font-size:.85em;opacity:.7;}
+
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+
+  .chero{text-align:center;padding:60px 0 32px;}
+  .chero h1{font-size:clamp(32px,5vw,50px);letter-spacing:-.035em;line-height:1.04;}
+  .chero p{color:var(--muted);font-size:18px;margin-top:14px;}
+
+  /* comparator */
+  .comparator{border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,.04);}
+  .picker{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;}
+  .selwrap label{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;}
+  select{width:100%;font-family:var(--sans);font-size:15px;font-weight:600;padding:13px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;color:var(--text);-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b6b7b' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+  select:focus{outline:none;border-color:var(--accent);}
+  .vs-pill{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:999px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
+
+  .ctable{margin-top:26px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .ctable .crow{display:grid;grid-template-columns:140px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .ctable .crow:last-child{border-bottom:0;}
+  .ctable .crow.head{background:var(--surface);}
+  .ctable .cc{padding:14px 18px;font-size:14px;}
+  .ctable .cc.lab{color:var(--muted);font-weight:600;border-right:1px solid var(--border);}
+  .ctable .cc.head{font-weight:700;font-size:16px;}
+  .ctable .cc.head .hp{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .ctable .cc .v{font-family:var(--mono);}
+  .ctable .cc.win{background:var(--green-tint);}
+  .ctable .cc.win .v{color:var(--green);font-weight:700;}
+  .wintag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-left:8px;}
+
+  section.sec{padding:64px 0;border-top:1px solid var(--border);}
+  .sec-head{margin-bottom:30px;}
+  .sec-head h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:-.025em;}
+  .sec-head p{color:var(--muted);font-size:16px;margin-top:10px;}
+
+  .pairgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .pair{border:1px solid var(--border);border-radius:12px;padding:22px;transition:border-color .15s,box-shadow .15s,transform .15s;display:flex;flex-direction:column;}
+  .pair:hover{border-color:#d4d4d8;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px);}
+  .pair .pp{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.3;}
+  .pair .px{font-family:var(--mono);font-size:12px;color:var(--muted);margin:6px 0 16px;}
+  .pair .go{margin-top:auto;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .pair:hover .go{gap:9px;}
+
+  .uctable-wrap{border:1px solid var(--border);border-radius:12px;overflow-x:auto;}
+  table.uc{width:100%;border-collapse:collapse;font-size:14px;min-width:640px;}
+  table.uc th,table.uc td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--border);}
+  table.uc th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface);font-weight:600;}
+  table.uc tr:last-child td{border-bottom:0;}
+  table.uc tbody tr:hover{background:var(--surface);}
+  table.uc .usecase{font-weight:600;}
+  table.uc .best{font-family:var(--mono);font-weight:600;}
+  table.uc .price{font-family:var(--mono);color:var(--green);font-weight:600;}
+  table.uc .why{color:var(--muted);}
+
+  .ctasec{background:var(--accent-tint);text-align:center;padding:72px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:16px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:26px;}
+
+  footer{border-top:1px solid var(--border);padding:32px 0;}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .fleft{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px;}
+  footer .flinks{display:flex;gap:24px;font-size:14px;color:var(--muted);}
+  footer .flinks a:hover{color:var(--text);}
+
+  @media (max-width:760px){
+    .pairgrid{grid-template-columns:1fr;}
+    .picker{grid-template-columns:1fr;gap:12px;}
+    .vs-pill{margin:0 auto;}
+    .ctable .crow{grid-template-columns:110px 1fr 1fr;}
+    .nav-links a.link.hide-sm{display:none;}
+    .nav-links{gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site" aria-label="Primary">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="BurnCloud home">
+      <svg viewBox="0 0 467 467" aria-hidden="true"><defs><linearGradient id="fg" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.78,179.95,-222.488,-0.964,234.62,167.69)"><stop offset="0" stop-color="#f7b52c"></stop><stop offset="1" stop-color="#e95513"></stop></linearGradient></defs><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud
+    </a>
+    <div class="nav-links">
+      <a class="link" href="../models/">Models</a>
+      <a class="link" href="../pricing/">Pricing</a>
+      <a class="link hide-sm" href="#">GitHub <span class="ext">&#8599;</span></a>
+      <a class="btn btn-primary" href="#cta">Start Free &#8594;</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <a href="../">Home</a>
+    <span class="sep">/</span>
+    <span class="cur">Compare</span>
+  </div>
+</nav>
+
+<main>
+  <section class="chero" aria-labelledby="c-h1">
+    <div class="wrap">
+      <h1 id="c-h1">Compare AI models side by side</h1>
+      <p>Find the best and cheapest model for your exact use case.</p>
+    </div>
+  </section>
+
+  <section aria-label="Model comparator">
+    <div class="wrap">
+      <div class="comparator">
+        <div class="picker">
+          <div class="selwrap">
+            <label for="selA">Model A</label>
+            <select id="selA" aria-label="Select model A"></select>
+          </div>
+          <div class="vs-pill" aria-hidden="true">vs</div>
+          <div class="selwrap">
+            <label for="selB">Model B</label>
+            <select id="selB" aria-label="Select model B"></select>
+          </div>
+        </div>
+        <div class="ctable" id="ctable"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="pop-h2">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="pop-h2">Most compared pairs</h2>
+        <p>Jump straight to a detailed head-to-head.</p>
+      </div>
+      <div class="pairgrid">
+        <a class="pair" href="deepseek-vs-openai/index.html">
+          <div class="pp">DeepSeek V4 vs OpenAI GPT-5.4</div>
+          <div class="px">17x cheaper input</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+        <a class="pair" href="#">
+          <div class="pp">Claude Sonnet 4.6 vs GPT-5.4</div>
+          <div class="px">frontier head-to-head</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+        <a class="pair" href="../alternatives/openrouter/index.html">
+          <div class="pp">BurnCloud vs OpenRouter</div>
+          <div class="px">0% vs 5.5% markup</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+        <a class="pair" href="#">
+          <div class="pp">DeepSeek V4 vs Claude Sonnet</div>
+          <div class="px">value vs reasoning</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+        <a class="pair" href="#">
+          <div class="pp">BurnCloud vs SiliconFlow</div>
+          <div class="px">open source gateway</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+        <a class="pair" href="#">
+          <div class="pp">Gemini 3.1 Pro vs GPT-5.4</div>
+          <div class="px">1M context vs ecosystem</div>
+          <span class="go">Compare &#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="case-h2">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="case-h2">Best model by use case</h2>
+        <p>A quick map from what you're building to the model that fits.</p>
+      </div>
+      <div class="uctable-wrap">
+        <table class="uc">
+          <thead>
+            <tr><th scope="col">Use case</th><th scope="col">Best model</th><th scope="col">Price</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="usecase">Code generation</td><td class="best">DeepSeek V4</td><td class="price">$0.14/1M</td><td class="why">Best price/quality ratio</td></tr>
+            <tr><td class="usecase">Long documents</td><td class="best">Gemini 3.1 Pro</td><td class="price">$2.00/1M</td><td class="why">1M-token context window</td></tr>
+            <tr><td class="usecase">Complex reasoning</td><td class="best">Claude Opus 4.7</td><td class="price">$5.00/1M</td><td class="why">Strongest reasoning</td></tr>
+            <tr><td class="usecase">Fast responses</td><td class="best">Step 3.5 Flash</td><td class="price">$0.10/1M</td><td class="why">Cheapest and low latency</td></tr>
+            <tr><td class="usecase">Creative writing</td><td class="best">Claude Sonnet 4.6</td><td class="price">$3.00/1M</td><td class="why">Best prose quality</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="ctasec" id="cta" aria-labelledby="cta-h2">
+    <div class="wrap">
+      <h2 id="cta-h2">Access any model via BurnCloud</h2>
+      <p class="cap">One API key · Lowest price · Open source</p>
+      <div class="btnrow"><a href="#" class="btn btn-primary btn-lg">Start Free &#8594;</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fleft">
+      <svg viewBox="0 0 467 467" width="16" height="16" aria-hidden="true"><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud Ltd. UK · MIT License · © 2026
+    </div>
+    <nav class="flinks" aria-label="Footer">
+      <a href="../models/">Models</a>
+      <a href="../pricing/">Pricing</a>
+      <a href="../security/">Security</a>
+      <a href="#">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const MODELS = [
+    { name:"DeepSeek V4 Flash", prov:"DeepSeek", input:0.14, output:0.28, ctx:"128K", maxOut:"16K", speed:3, speedLabel:"Fast", best:"Code, high-volume" },
+    { name:"DeepSeek V4 Pro", prov:"DeepSeek", input:0.435, output:0.87, ctx:"1M", maxOut:"32K", speed:2, speedLabel:"Medium", best:"Reasoning at low cost" },
+    { name:"Step 3.5 Flash", prov:"StepFun", input:0.10, output:0.40, ctx:"128K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Cheapest, fast replies" },
+    { name:"Kimi K2.6", prov:"Moonshot", input:0.50, output:2.00, ctx:"1M", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Long context" },
+    { name:"Qwen 3.5", prov:"Alibaba", input:0.38, output:1.52, ctx:"128K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Multilingual" },
+    { name:"GLM-5.1", prov:"Zhipu", input:0.45, output:1.80, ctx:"256K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Agents" },
+    { name:"Claude Haiku 4.5", prov:"Anthropic", input:0.25, output:1.25, ctx:"200K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Quick frontier tasks" },
+    { name:"Claude Sonnet 4.6", prov:"Anthropic", input:3.00, output:15.00, ctx:"200K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Writing, balanced reasoning" },
+    { name:"Claude Opus 4.7", prov:"Anthropic", input:5.00, output:25.00, ctx:"200K", maxOut:"32K", speed:1, speedLabel:"Slow", best:"Hardest reasoning" },
+    { name:"GPT-5.4", prov:"OpenAI", input:2.50, output:15.00, ctx:"128K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Broad tasks, ecosystem" },
+    { name:"GPT-5.5", prov:"OpenAI", input:5.00, output:30.00, ctx:"128K", maxOut:"16K", speed:1, speedLabel:"Slow", best:"Top OpenAI quality" },
+    { name:"Gemini 2.5 Flash", prov:"Google", input:0.30, output:2.50, ctx:"1M", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Cheap long context" },
+    { name:"Gemini 3.1 Pro", prov:"Google", input:2.00, output:12.00, ctx:"1M", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Long-doc analysis" },
+    { name:"Grok 4.1", prov:"xAI", input:3.00, output:15.00, ctx:"128K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Realtime knowledge" }
+  ];
+  const per1m=(n)=>{const r=Math.round(n*1000);return "$"+(r%10===0?(r/1000).toFixed(2):(r/1000).toFixed(3))+"/1M";};
+  const ctxNum=(s)=>s==="1M"?1000:parseInt(s);
+
+  const selA=document.getElementById('selA'), selB=document.getElementById('selB');
+  MODELS.forEach((m,i)=>{
+    selA.insertAdjacentHTML('beforeend',`<option value="${i}">${m.name}</option>`);
+    selB.insertAdjacentHTML('beforeend',`<option value="${i}">${m.name}</option>`);
+  });
+  selA.value="0"; selB.value="9"; // DeepSeek V4 Flash vs GPT-5.4
+
+  function cell(val, win){ return `<div class="cc ${win?'win':''}"><span class="v">${val}</span>${win?'<span class="wintag">win</span>':''}</div>`; }
+  function render(){
+    const a=MODELS[+selA.value], b=MODELS[+selB.value];
+    const rows=[
+      {lab:"Provider", a:a.prov, b:b.prov, cmp:null},
+      {lab:"Input / 1M", a:per1m(a.input), b:per1m(b.input), cmp: a.input<b.input?'a':(b.input<a.input?'b':null)},
+      {lab:"Output / 1M", a:per1m(a.output), b:per1m(b.output), cmp: a.output<b.output?'a':(b.output<a.output?'b':null)},
+      {lab:"Context", a:a.ctx, b:b.ctx, cmp: ctxNum(a.ctx)>ctxNum(b.ctx)?'a':(ctxNum(b.ctx)>ctxNum(a.ctx)?'b':null)},
+      {lab:"Max output", a:a.maxOut, b:b.maxOut, cmp:null},
+      {lab:"Speed", a:a.speedLabel, b:b.speedLabel, cmp: a.speed>b.speed?'a':(b.speed>a.speed?'b':null)},
+      {lab:"Best for", a:a.best, b:b.best, cmp:null}
+    ];
+    let html=`<div class="crow head">
+      <div class="cc lab">&nbsp;</div>
+      <div class="cc head">${a.name}<span class="hp">${a.prov}</span></div>
+      <div class="cc head">${b.name}<span class="hp">${b.prov}</span></div>
+    </div>`;
+    html+=rows.map(r=>`<div class="crow">
+      <div class="cc lab">${r.lab}</div>
+      ${cell(r.a, r.cmp==='a')}
+      ${cell(r.b, r.cmp==='b')}
+    </div>`).join('');
+    document.getElementById('ctable').innerHTML=html;
+  }
+  selA.addEventListener('change',render);
+  selB.addEventListener('change',render);
+  render();
+</script>
+</body>
+</html>

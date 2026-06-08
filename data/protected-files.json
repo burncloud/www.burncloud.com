@@ -1,0 +1,32 @@
+{
+  "protected_files": [
+    "data/models.json",
+    "data/seo-rules.json",
+    "data/protected-files.json",
+    "CLAUDE.md",
+    "README.md",
+    ".git"
+  ],
+  "protected_content": {
+    "core_slogan": "The Open Source LLM Gateway",
+    "brand_name": "BurnCloud",
+    "domain": "burncloud.com",
+    "api_url": "api.burncloud.com"
+  },
+  "price_source": "data/models.json",
+  "price_change_alert_threshold": 0.5,
+  "actions": {
+    "price_spike": "stop_and_notify",
+    "protected_file_edit": "stop_and_notify",
+    "competitor_price_lower": "stop_and_notify",
+    "delete_published_page": "stop_and_notify",
+    "uncertain_action": "stop_and_notify"
+  },
+  "stop_conditions": [
+    "需要修改受保护文件",
+    "价格数据异常（涨幅>50%）",
+    "竞品价格低于BurnCloud",
+    "连续失败3次以上",
+    "不确定如何执行"
+  ]
+}

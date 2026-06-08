@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek V4 vs OpenAI GPT-5.4: Cost &amp; Performance 2026 | BurnCloud</title>
+<meta name="description" content="DeepSeek V4 at $0.14/1M vs GPT-5.4 at $2.50/1M. 17x cheaper. Full comparison with benchmarks, speed tests, and migration guide.">
+<link rel="canonical" href="./index.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://burncloud.com/compare/deepseek-vs-openai">
+<meta property="og:title" content="DeepSeek V4 vs OpenAI GPT-5.4: Cost &amp; Performance 2026">
+<meta property="og:description" content="DeepSeek V4 at $0.14/1M vs GPT-5.4 at $2.50/1M. 17x cheaper. Full comparison with benchmarks, speed tests, and migration guide.">
+<meta property="og:site_name" content="BurnCloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek V4 vs OpenAI GPT-5.4: Cost &amp; Performance 2026">
+<meta name="twitter:description" content="DeepSeek V4 at $0.14/1M vs GPT-5.4 at $2.50/1M. 17x cheaper. Benchmarks, speed, migration guide.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://burncloud.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Compare", "item": "https://burncloud.com/compare"},
+    {"@type": "ListItem", "position": 3, "name": "DeepSeek vs OpenAI", "item": "https://burncloud.com/compare/deepseek-vs-openai"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is DeepSeek V4 as good as GPT-5.4?","acceptedAnswer":{"@type":"Answer","text":"For most coding, analysis, and general tasks DeepSeek V4 is competitive with GPT-5.4 on quality while costing a fraction as much. GPT-5.4 still has an edge on the hardest multi-step reasoning."}},
+    {"@type":"Question","name":"Is my data safe with DeepSeek?","acceptedAnswer":{"@type":"Answer","text":"Through BurnCloud, requests to DeepSeek and OpenAI are proxied directly to the official API with zero storage. The gateway is open source so you can verify there is no logging."}},
+    {"@type":"Question","name":"Can I switch back to GPT easily?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both run on the same BurnCloud key and OpenAI-compatible API. Switching is a one-line change to the model string."}},
+    {"@type":"Question","name":"What is the rate limit?","acceptedAnswer":{"@type":"Answer","text":"Free accounts get 60 requests per minute; paid accounts scale with credit balance up to thousands of RPM on request."}},
+    {"@type":"Question","name":"Does DeepSeek support function calling?","acceptedAnswer":{"@type":"Answer","text":"Yes. DeepSeek V4 supports OpenAI-compatible tool/function calling, so existing tool definitions work unchanged."}}
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff;--surface:#f7f7f8;--border:#e5e5e5;--text:#0a0a0f;--muted:#6b6b7b;
+    --accent:#6366f1;--accent-hover:#4f46e5;--accent-tint:#eef2ff;
+    --green:#16a34a;--green-tint:#f0fdf4;--red:#dc2626;--code-bg:#f4f4f5;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,'Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SF Mono','JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace;
+    --maxw:920px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-weight:700;letter-spacing:-.025em;line-height:1.15;color:var(--text);}
+
+  .btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .1s;white-space:nowrap;}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-hover);}
+  .btn-outline{background:var(--bg);color:var(--text);border-color:var(--border);}
+  .btn-outline:hover{border-color:var(--muted);background:var(--surface);}
+  .btn-lg{padding:14px 26px;font-size:15px;border-radius:9px;}
+
+  nav.site{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  nav.site .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1000px;}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;letter-spacing:-.02em;}
+  .logo svg{width:20px;height:20px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a.link{font-size:14px;color:var(--muted);font-weight:500;transition:color .15s;}
+  .nav-links a.link:hover{color:var(--text);}
+  .ext{font-size:.85em;opacity:.7;}
+
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{max-width:1000px;padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+
+  .hero{padding:56px 0 36px;}
+  .hero h1{font-size:clamp(30px,4.8vw,46px);letter-spacing:-.03em;line-height:1.08;max-width:760px;}
+
+  /* verdict box */
+  .verdict{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:30px;}
+  .verdict .vrow{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--border);}
+  .verdict .vrow:last-child{border-bottom:0;}
+  .verdict .vk{padding:16px 20px;background:var(--surface);font-weight:600;font-size:14px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--border);}
+  .verdict .vk .ic{width:22px;height:22px;flex:0 0 auto;}
+  .verdict .vv{padding:16px 20px;font-size:15px;display:flex;align-items:center;}
+  .verdict .vv .winner{font-weight:700;}
+  .verdict .vv .winner.ds{color:var(--green);}
+  .verdict .vv .tag{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:8px;}
+
+  section.sec{padding:56px 0;border-top:1px solid var(--border);}
+  .sec-head{margin-bottom:24px;}
+  .sec-head h2{font-size:clamp(24px,3.6vw,32px);letter-spacing:-.025em;}
+  .sec-head p{color:var(--muted);font-size:15px;margin-top:8px;}
+
+  /* price table */
+  .ptable{width:100%;border-collapse:collapse;font-size:15px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .ptable th,.ptable td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--border);}
+  .ptable thead th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface);font-weight:600;}
+  .ptable tbody tr:last-child td{border-bottom:0;}
+  .ptable .lab{font-weight:600;color:var(--muted);}
+  .ptable .num{font-family:var(--mono);text-align:right;}
+  .ptable .ds{color:var(--green);font-weight:700;}
+  .ptable .diff{font-family:var(--mono);color:var(--green);font-weight:600;text-align:right;}
+
+  .monthly{margin-top:22px;background:var(--green-tint);border:1px solid #bbf7d0;border-radius:12px;padding:24px 26px;}
+  .monthly .mt{font-size:14px;color:#15803d;font-weight:600;margin-bottom:14px;}
+  .monthly .mgrid{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-end;}
+  .monthly .mcol .ml{font-size:13px;color:var(--muted);font-family:var(--mono);}
+  .monthly .mcol .mv{font-size:26px;font-weight:700;font-family:var(--mono);letter-spacing:-.02em;}
+  .monthly .mcol.save .mv{color:var(--green);}
+
+  /* generic compare table */
+  .gtable-wrap{border:1px solid var(--border);border-radius:12px;overflow-x:auto;}
+  table.g{width:100%;border-collapse:collapse;font-size:15px;min-width:520px;}
+  table.g th,table.g td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--border);}
+  table.g thead th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface);font-weight:600;}
+  table.g tbody tr:last-child td{border-bottom:0;}
+  table.g .lab{font-weight:600;color:var(--muted);}
+  table.g .num{font-family:var(--mono);}
+  table.g .hl{color:var(--green);font-weight:700;}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .col-card{border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .col-card.ds{border-top:3px solid var(--green);}
+  .col-card.gpt{border-top:3px solid var(--accent);}
+  .col-card h3{font-size:17px;margin-bottom:16px;}
+  .col-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .col-card li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3a3a45;}
+  .col-card li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:0 0 auto;margin-top:8px;}
+  .col-card.ds li::before{background:var(--green);}
+
+  /* code */
+  pre.code{background:var(--code-bg);border:1px solid var(--border);border-radius:12px;padding:24px 26px;font-family:var(--mono);font-size:13.5px;line-height:1.8;overflow-x:auto;}
+  pre.code .cm{color:var(--muted);}
+  pre.code .str{color:var(--green);}
+  pre.code .fn{color:var(--accent);}
+  pre.code .kw{color:#9333ea;}
+  pre.code .changed{background:rgba(99,102,241,.1);display:inline-block;width:100%;border-radius:3px;}
+  pre.code .mk{color:var(--accent);}
+  .code-cap{margin-top:14px;font-size:14px;color:var(--green);font-weight:500;font-family:var(--mono);}
+
+  .faq details{border-bottom:1px solid var(--border);}
+  .faq details:first-child{border-top:1px solid var(--border);}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:16px;font-weight:600;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .sign{flex:0 0 auto;color:var(--accent);font-size:20px;line-height:1;transition:transform .25s;}
+  .faq details[open] summary .sign{transform:rotate(45deg);}
+  .faq .ans{padding:0 36px 22px 0;color:var(--muted);font-size:15px;line-height:1.7;}
+
+  .ilinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+  .ilinks a{font-size:14px;font-weight:600;color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:9px 18px;transition:all .15s;}
+  .ilinks a:hover{border-color:var(--accent);background:var(--accent-tint);}
+
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+
+  footer{border-top:1px solid var(--border);padding:32px 0;}
+  footer .wrap{max-width:1000px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .fleft{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px;}
+  footer .flinks{display:flex;gap:24px;font-size:14px;color:var(--muted);}
+  footer .flinks a:hover{color:var(--text);}
+
+  @media (max-width:680px){
+    .twocol{grid-template-columns:1fr;}
+    .verdict .vrow{grid-template-columns:150px 1fr;}
+    .nav-links a.link.hide-sm{display:none;}
+    .nav-links{gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site" aria-label="Primary">
+  <div class="wrap">
+    <a class="logo" href="../../" aria-label="BurnCloud home">
+      <svg viewBox="0 0 467 467" aria-hidden="true"><defs><linearGradient id="fg" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.78,179.95,-222.488,-0.964,234.62,167.69)"><stop offset="0" stop-color="#f7b52c"></stop><stop offset="1" stop-color="#e95513"></stop></linearGradient></defs><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud
+    </a>
+    <div class="nav-links">
+      <a class="link" href="../../models/">Models</a>
+      <a class="link" href="../">Compare</a>
+      <a class="link hide-sm" href="../../pricing/">Pricing</a>
+      <a class="btn btn-primary" href="#cta">Start Free &#8594;</a>
+    </div>
+  </div>
+</nav>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <a href="../../">Home</a>
+    <span class="sep">/</span>
+    <a href="../">Compare</a>
+    <span class="sep">/</span>
+    <span class="cur">DeepSeek vs OpenAI</span>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <h1 id="h1">DeepSeek V4 vs OpenAI GPT-5.4: Complete Comparison 2026</h1>
+      <div class="verdict">
+        <div class="vrow">
+          <div class="vk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5h3.5a1.8 1.8 0 010 3.5H10a1.8 1.8 0 000 3.5h3.5"></path></svg> Cost</div>
+          <div class="vv"><span class="winner ds">DeepSeek V4</span><span class="tag">17x cheaper input</span></div>
+        </div>
+        <div class="vrow">
+          <div class="vk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#6b6b7b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 00-3 9v2h6v-2a5 5 0 00-3-9zM9 19h6M10 21h4"></path></svg> Quality</div>
+          <div class="vv">Similar for most tasks<span class="tag">GPT edges hardest reasoning</span></div>
+        </div>
+        <div class="vrow">
+          <div class="vk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"></path></svg> Speed</div>
+          <div class="vv"><span class="winner ds">DeepSeek V4 Flash</span><span class="tag">lower latency</span></div>
+        </div>
+        <div class="vrow">
+          <div class="vk"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"></path><path d="M9.5 12l2 2 3.5-4"></path></svg> Privacy</div>
+          <div class="vv">Equal via BurnCloud<span class="tag">open source gateway</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="price-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="price-h2">Price comparison</h2></div>
+      <table class="ptable">
+        <thead>
+          <tr><th>&nbsp;</th><th class="num">DeepSeek V4</th><th class="num">GPT-5.4</th><th class="num">Difference</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="lab">Input / 1M</td><td class="num ds">$0.14</td><td class="num">$2.50</td><td class="diff">17x cheaper</td></tr>
+          <tr><td class="lab">Output / 1M</td><td class="num ds">$0.28</td><td class="num">$15.00</td><td class="diff">53x cheaper</td></tr>
+        </tbody>
+      </table>
+      <div class="monthly">
+        <div class="mt">If you use 10M tokens / month:</div>
+        <div class="mgrid">
+          <div class="mcol"><div class="ml">DeepSeek V4</div><div class="mv" style="color:var(--green)">$1.40</div></div>
+          <div class="mcol"><div class="ml">GPT-5.4</div><div class="mv">$25.00</div></div>
+          <div class="mcol save"><div class="ml">You save</div><div class="mv">$23.60/mo</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="bench-h2">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="bench-h2">Performance benchmarks</h2>
+        <p>Published benchmark scores, higher is better.</p>
+      </div>
+      <div class="gtable-wrap">
+        <table class="g">
+          <thead><tr><th>Benchmark</th><th class="num">DeepSeek V4</th><th class="num">GPT-5.4</th></tr></thead>
+          <tbody>
+            <tr><td class="lab">MMLU (knowledge)</td><td class="num">88.6</td><td class="num hl">89.4</td></tr>
+            <tr><td class="lab">HumanEval (code)</td><td class="num hl">92.1</td><td class="num">91.0</td></tr>
+            <tr><td class="lab">GSM8K (math)</td><td class="num">95.2</td><td class="num hl">96.1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="speed-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="speed-h2">Speed &amp; latency</h2></div>
+      <div class="gtable-wrap">
+        <table class="g">
+          <thead><tr><th>Metric</th><th class="num">DeepSeek V4 Flash</th><th class="num">GPT-5.4</th></tr></thead>
+          <tbody>
+            <tr><td class="lab">Avg response time</td><td class="num hl">~210ms</td><td class="num">~480ms</td></tr>
+            <tr><td class="lab">Time to first token</td><td class="num hl">~140ms</td><td class="num">~320ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="use-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="use-h2">When to use each model</h2></div>
+      <div class="twocol">
+        <div class="col-card ds">
+          <h3>DeepSeek V4 is better for</h3>
+          <ul>
+            <li>Cost-sensitive applications</li>
+            <li>High-volume API calls</li>
+            <li>Code generation</li>
+            <li>Data analysis at scale</li>
+          </ul>
+        </div>
+        <div class="col-card gpt">
+          <h3>GPT-5.4 is better for</h3>
+          <ul>
+            <li>Complex multi-step reasoning</li>
+            <li>When the OpenAI ecosystem is needed</li>
+            <li>Specific GPT fine-tuning workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="mig-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="mig-h2">How to switch from OpenAI to DeepSeek</h2></div>
+<pre class="code"><span class="cm"># Before</span>
+client = openai.<span class="fn">OpenAI</span>(api_key=<span class="str">"sk-..."</span>)
+
+<span class="cm"># After — 2 changes</span>
+client = openai.<span class="fn">OpenAI</span>(
+<span class="changed">    base_url=<span class="str">"https://api.burncloud.com/v1"</span>,  <span class="mk"># 1. point at BurnCloud</span></span>
+    api_key=<span class="str">"your-burncloud-key"</span>
+)
+<span class="changed">model = <span class="str">"deepseek-v4"</span>  <span class="mk"># 2. swap the model string</span></span></pre>
+      <p class="code-cap">&#10003; Takes 2 minutes. Saves up to 94% on costs.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="faq-h2">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="faq-h2">Frequently asked questions</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Is DeepSeek V4 as good as GPT-5.4?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">For most coding, analysis, and general tasks DeepSeek V4 is competitive with GPT-5.4 on quality while costing a fraction as much. GPT-5.4 still has an edge on the hardest multi-step reasoning.</div>
+        </details>
+        <details>
+          <summary>Is my data safe with DeepSeek?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Through BurnCloud, requests to DeepSeek and OpenAI are proxied directly to the official API with zero storage. The gateway is open source, so you can verify there's no logging.</div>
+        </details>
+        <details>
+          <summary>Can I switch back to GPT easily?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Yes. Both run on the same BurnCloud key and OpenAI-compatible API — switching is a one-line change to the model string.</div>
+        </details>
+        <details>
+          <summary>What is the rate limit?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Free accounts get 60 requests per minute; paid accounts scale with credit balance up to thousands of RPM on request.</div>
+        </details>
+        <details>
+          <summary>Does DeepSeek support function calling?<span class="sign" aria-hidden="true">+</span></summary>
+          <div class="ans">Yes. DeepSeek V4 supports OpenAI-compatible tool/function calling, so existing tool definitions work unchanged.</div>
+        </details>
+      </div>
+      <div class="ilinks">
+        <a href="../../models/deepseek-v4-flash/index.html">DeepSeek V4 details &#8594;</a>
+        <a href="../../models/">All models &#8594;</a>
+        <a href="../../pricing/">Pricing &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ctasec" id="cta" aria-labelledby="cta-h2">
+    <div class="wrap">
+      <h2 id="cta-h2">Try DeepSeek V4 via BurnCloud</h2>
+      <p class="cap">$0.14/1M tokens · Open source · Verified</p>
+      <div class="btnrow"><a href="#" class="btn btn-primary btn-lg">Start Free &#8594;</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fleft">
+      <svg viewBox="0 0 467 467" width="16" height="16" aria-hidden="true"><path fill="url(#fg)" d="m347.1 196.1c-7.8-11.8-17.3-24.6-28.6-37.3 0 0-34.2-39.3-28.5-100.4 0 0-133.7 51.7-136.2 160 0 0-19.7-31.1-15.6-89.4 0 0-41.9 41-49.1 106.3-40.1 14.6-72.6 48.6-72.6 84 0 49.3 51 89.4 114.3 90.2-46.8-8.4-81.6-40.7-81.6-79.5 0-25.6 15.3-48.5 39.3-63.5 1 14.9 4 30.6 9.5 47.1 0 0 22.1 73.7 103.4 92.7 24.3 5.7 50 4.1 72.9-6 25.8-11.3 54-35.4 55.3-86.5 0 0 1.9-52.9-30.7-79.4 0 0 42.3 96.7-34.2 126.3-24.4 9.5-51.6 9.1-75.8-0.9-33.2-13.8-74.4-49-67.3-139.5 0 0 19.1 66.4 61 90.4 0 0-37.8-112.8 75.4-190.7 0 0 10.7 40.6 37 65.2 7.7 7.3 79.5 61.5 64.6 155.4 14.2-18.1 26.3-61.2 14.9-93.9 0 0-2.7-6.9-8.3-17.9 27.9 7.1 52.4 29.3 54.2 82.1 1.6 44.5-31.1 82.5-75 97.8 59.9-7.2 106.1-53 106.1-108.6 0-55.5-43.8-98.8-104.4-104.1z"></path></svg>
+      BurnCloud Ltd. UK · MIT License · © 2026
+    </div>
+    <nav class="flinks" aria-label="Footer">
+      <a href="../../models/">Models</a>
+      <a href="../">Compare</a>
+      <a href="../../pricing/">Pricing</a>
+      <a href="../../security/">Security</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
