@@ -1,0 +1,34 @@
+/* ===== Models Hero ===== */
+.mhero { padding: 56px 0 32px; border-bottom: 1px solid var(--border); }
+.mhero h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.035em; }
+.mhero .sub { color: var(--muted); font-size: 18px; margin-top: 14px; }
+
+/* ===== Models Grid ===== */
+.mgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.mcard { border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+.mcard:hover { border-color: #d4d4d8; box-shadow: 0 4px 16px rgba(0,0,0,0.05); transform: translateY(-2px); }
+.mcard h3 { font-size: 16px; letter-spacing: -0.02em; margin-bottom: 12px; }
+.mcard .prices { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.mcard .prices .input { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 700; }
+.mcard .prices .output { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.mcard .specs { display: flex; gap: 12px; }
+.mcard .spec { font-family: var(--mono); font-size: 12px; color: var(--muted); background: var(--surface); padding: 4px 8px; border-radius: 6px; }
+
+/* ===== Model Detail ===== */
+.mrow { display: flex; align-items: center; gap: 16px; }
+.live { font-family: var(--mono); font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: var(--green-tint); color: var(--green); }
+.mdesc { color: var(--muted); font-size: 18px; margin-top: 12px; }
+.mspecs { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+.mspec { display: flex; flex-direction: column; gap: 4px; }
+.mlab { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.mval { font-family: var(--mono); font-size: 20px; font-weight: 700; }
+.mval.hl { color: var(--green); }
+
+/* ===== Use Cases Grid ===== */
+.uc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+.uc { border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.uc h3 { font-size: 16px; }
+
+.finalcta { background: var(--accent-tint); border: 1px solid #dfe3ff; border-radius: 16px; padding: 34px; text-align: center; margin-top: 32px; }
+.finalcta h3 { font-size: 22px; letter-spacing: -0.02em; }
+.finalcta .cap { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: 12px 0 20px; }

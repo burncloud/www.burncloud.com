@@ -69,7 +69,7 @@ const slug = Astro.params.slug as keyof typeof articles;
 const article = articles[slug];
 ---
 
-<BaseLayout title={`${article.title} | BurnCloud`} description={article.description}>
+<BaseLayout pageStyle="blog" title={`${article.title} | BurnCloud`} description={article.description}>
   <Nav />
   
   <nav class="crumb" aria-label="Breadcrumb">
@@ -134,35 +134,3 @@ response = client.chat.completions.create(
   <Footer />
 </BaseLayout>
 
-<style is:inline>
-  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
-  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
-  .crumb a:hover{color:var(--text);}
-  .crumb .sep{opacity:.5;}
-  .crumb .cur{color:var(--text);}
-  
-  .article{padding:48px 0;max-width:720px;margin:0 auto;}
-  
-  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:999px;}
-  .tag.tutorial{color:#2563eb;background:#eff6ff;}
-  .tag.comparison{color:#7c3aed;background:#f5f3ff;}
-  .tag.guide{color:#16a34a;background:#f0fdf4;}
-  
-  .article h1{font-size:clamp(30px,4.4vw,42px);letter-spacing:-.035em;margin:16px 0 14px;line-height:1.1;}
-  .article .meta{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border);padding-bottom:24px;}
-  .article .meta .dot{opacity:.5;}
-  
-  .content{padding-top:32px;}
-  .content h2{font-size:24px;letter-spacing:-.025em;margin:48px 0 16px;}
-  .content p{font-size:17px;line-height:1.8;color:#2a2a33;}
-  .content p+p{margin-top:16px;}
-  .content ul{margin:16px 0;padding-left:24px;}
-  .content li{font-size:17px;line-height:1.7;color:#2a2a33;margin-bottom:8px;}
-  .content pre.code{background:var(--code-bg);padding:20px;border-radius:10px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.6;margin:20px 0;}
-  
-  .lead{font-size:19px;line-height:1.7;color:#2a2a33;}
-  
-  .cta-box{background:var(--accent-tint);border:1px solid #dfe3ff;border-radius:16px;padding:32px;text-align:center;margin-top:48px;}
-  .cta-box h3{font-size:22px;letter-spacing:-.02em;}
-  .cta-box p{font-family:var(--mono);font-size:13px;color:var(--muted);margin:12px 0 20px;}
-</style>

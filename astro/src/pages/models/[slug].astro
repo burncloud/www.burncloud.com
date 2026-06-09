@@ -75,7 +75,7 @@ const slug = Astro.params.slug as keyof typeof models;
 const model = models[slug];
 ---
 
-<BaseLayout title={`${model.name} API — ${model.input} USD per 1M Tokens | BurnCloud`} description={`Access ${model.name} API at ${model.input} USD per 1M input tokens via BurnCloud. OpenAI SDK compatible.`}>
+<BaseLayout pageStyle="models" title={`${model.name} API — ${model.input} USD per 1M Tokens | BurnCloud`} description={`Access ${model.name} API at ${model.input} USD per 1M input tokens via BurnCloud. OpenAI SDK compatible.`}>
   <Nav />
   
   <nav class="crumb" aria-label="Breadcrumb">
@@ -167,47 +167,3 @@ print(response.choices[0].message.content)`}></pre>
   <Footer />
 </BaseLayout>
 
-<style is:inline>
-  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
-  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
-  .crumb a:hover{color:var(--text);}
-  .crumb .sep{opacity:.5;}
-  .crumb .cur{color:var(--text);}
-  
-  .layout{display:grid;grid-template-columns:1fr 300px;gap:52px;padding:48px 0 40px;align-items:start;}
-  
-  .mhero{padding-bottom:32px;border-bottom:1px solid var(--border);}
-  .mrow{display:flex;align-items:center;gap:16px;}
-  .mhero h1{font-size:clamp(32px,5vw,44px);letter-spacing:-.035em;}
-  .live{font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--green-tint);color:var(--green);}
-  .mdesc{color:var(--muted);font-size:18px;margin-top:12px;}
-  .mspecs{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;}
-  .mspec{display:flex;flex-direction:column;gap:4px;}
-  .mlab{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);}
-  .mval{font-family:var(--mono);font-size:20px;font-weight:700;}
-  .mval.hl{color:var(--green);}
-  
-  .article h2{font-size:24px;letter-spacing:-.025em;margin:44px 0 16px;}
-  
-  pre.code{background:var(--code-bg);padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.8;overflow-x:auto;border-radius:12px;margin:20px 0;}
-  
-  .uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;}
-  .uc{border:1px solid var(--border);border-radius:12px;padding:20px;}
-  .uc h3{font-size:16px;}
-  
-  .finalcta{background:var(--accent-tint);border:1px solid #dfe3ff;border-radius:16px;padding:34px;text-align:center;margin-top:32px;}
-  .finalcta h3{font-size:22px;letter-spacing:-.02em;}
-  .finalcta .cap{font-family:var(--mono);font-size:13px;color:var(--muted);margin:12px 0 20px;}
-  
-  .sidebar{position:sticky;top:80px;}
-  .sbox{border:1px solid var(--border);border-radius:12px;padding:20px;}
-  .sbox.cta{background:var(--accent-tint);border-color:#dfe3ff;text-align:center;}
-  .sbox .big{font-size:18px;font-weight:700;letter-spacing:-.02em;}
-  .sbox .price{font-family:var(--mono);font-size:13px;color:var(--muted);margin:6px 0 16px;}
-  
-  @media (max-width:900px){
-    .layout{grid-template-columns:1fr;gap:0;}
-    .sidebar{position:static;margin-top:44px;}
-    .uc-grid{grid-template-columns:1fr;}
-  }
-</style>

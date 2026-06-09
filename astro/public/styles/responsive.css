@@ -1,0 +1,71 @@
+/* ===== Responsive Styles ===== */
+
+@media (max-width: 768px) {
+  .sec { padding: 60px 0; }
+  .hero { padding: 64px 0 52px; }
+  .cards2 { grid-template-columns: 1fr; }
+  .steps3 { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; align-items: center; }
+  .flow-node { width: 100%; max-width: 320px; }
+  .flow-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .verify-box { flex-wrap: wrap; }
+  .verify-box .vproof { width: 100%; }
+  .nav-links { gap: 16px; }
+  .nav-links a.link.hide-sm { display: none; }
+  table.pricing th, table.pricing td { padding: 13px 14px; }
+  table.pricing .hide-sm { display: none; }
+  footer .frow { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 860px) {
+  .agrid { grid-template-columns: 1fr 1fr; }
+  .featured { grid-template-columns: 1fr; }
+  .featured .fimg { min-height: 180px; }
+}
+
+@media (max-width: 900px) {
+  .mgrid { grid-template-columns: repeat(2, 1fr); }
+  .layout { grid-template-columns: 1fr; gap: 0; }
+  .sidebar { position: static; margin-top: 44px; }
+  .uc-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 820px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-inputs { border-right: 0; border-bottom: 1px solid var(--border); }
+  .barrow { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; gap: 0; }
+  .sidebar { position: static; margin-top: 40px; }
+  .sbox.toc-box { display: none; }
+}
+
+@media (max-width: 760px) {
+  .pairgrid { grid-template-columns: 1fr; }
+  .picker { grid-template-columns: 1fr; gap: 12px; }
+  .vs-pill { margin: 0 auto; }
+  .ctable .crow { grid-template-columns: 110px 1fr 1fr; }
+  .twocol { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  footer .frow { grid-template-columns: 1fr; }
+  .nav-links a.link.hide-sm { display: none; }
+  .nav-links { gap: 14px; }
+  .agrid { grid-template-columns: 1fr; }
+  .mgrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .when-grid { grid-template-columns: 1fr; }
+  .win-row { grid-template-columns: 80px 1fr 1fr; }
+  .quickcmp .qrow { grid-template-columns: 100px 1fr 1fr; }
+  .reasons { grid-template-columns: 1fr; }
+  .cost-row { grid-template-columns: 140px 1fr 1fr; }
+}
+
+@media (max-width: 800px) {
+  .feat-grid, .lock-grid, .steps-grid { grid-template-columns: 1fr; }
+}

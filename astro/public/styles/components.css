@@ -1,0 +1,47 @@
+/* ===== Navigation ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+.logo svg { width: 20px; height: 20px; display: block; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a.link { font-size: 14px; color: var(--muted); font-weight: 500; transition: color 0.15s ease; }
+.nav-links a.link:hover { color: var(--text); }
+.ext { font-size: 0.85em; opacity: 0.7; }
+
+/* ===== Footer ===== */
+footer { border-top: 1px solid var(--border); padding: 32px 0; }
+footer .wrap { display: flex; flex-direction: column; gap: 24px; }
+footer .frow { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; }
+footer .fcol { display: flex; flex-direction: column; gap: 12px; }
+footer .fcol h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 600; }
+footer .fcol a { font-size: 14px; color: var(--muted); }
+footer .fcol a:hover { color: var(--text); }
+footer .fcol p { font-size: 14px; color: var(--muted); }
+footer .fbot { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; }
+footer .fbot p { font-size: 13px; color: var(--muted); }
+
+/* ===== Breadcrumb ===== */
+.crumb { border-bottom: 1px solid var(--border); background: var(--surface); }
+.crumb .wrap { padding: 12px 24px; font-size: 13px; color: var(--muted); font-family: var(--mono); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.crumb a:hover { color: var(--text); }
+.crumb .sep { opacity: 0.5; }
+.crumb .cur { color: var(--text); }
+
+/* ===== Section Common ===== */
+.sec { padding: 88px 0; border-bottom: 1px solid var(--border); }
+.sec-head { text-align: center; max-width: 640px; margin: 0 auto 52px; }
+.sec-head h2 { font-size: clamp(30px, 4.5vw, 42px); letter-spacing: -0.03em; }
+.sec-head p { color: var(--muted); font-size: 17px; margin-top: 14px; }
+
+/* ===== CTA Section ===== */
+.ctasec { background: var(--accent-tint); text-align: center; padding: 88px 0; }
+.ctasec h2 { font-size: clamp(32px, 5vw, 46px); letter-spacing: -0.03em; }
+.ctasec .cap { margin-top: 22px; font-size: 14px; color: var(--muted); }
