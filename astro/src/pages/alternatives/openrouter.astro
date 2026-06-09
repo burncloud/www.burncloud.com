@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="Best OpenRouter Alternative 2026 | No Fees, Open Source | BurnCloud" description="Looking for an OpenRouter alternative? BurnCloud has zero markup fees, is fully open source, and supports all Chinese LLMs. Switch in 2 minutes.">
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">OpenRouter Alternative</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Best OpenRouter Alternative 2026</h1>
+        <p class="sub">Zero markup fees, fully open source, full Chinese LLM support. Switch in 2 minutes.</p>
+        
+        <div class="quickcmp">
+          <div class="qrow head">
+            <div class="qc lab"></div>
+            <div class="qc or">OpenRouter</div>
+            <div class="qc bc">BurnCloud</div>
+          </div>
+          <div class="qrow">
+            <div class="qc lab">Markup fee</div>
+            <div class="qc or">5.5 percent</div>
+            <div class="qc bc">0 percent</div>
+          </div>
+          <div class="qrow">
+            <div class="qc lab">Open source</div>
+            <div class="qc or">No</div>
+            <div class="qc bc">Yes (MIT)</div>
+          </div>
+          <div class="qrow">
+            <div class="qc lab">Chinese models</div>
+            <div class="qc or">Limited</div>
+            <div class="qc bc">Full support</div>
+          </div>
+          <div class="qrow">
+            <div class="qc lab">Self-host</div>
+            <div class="qc or">No</div>
+            <div class="qc bc">Yes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Why developers switch to BurnCloud</h2>
+        </div>
+        
+        <div class="reasons">
+          <div class="reason">
+            <h3>Zero markup</h3>
+            <p>Pay the same price as going direct to each provider. No middleman fees.</p>
+          </div>
+          <div class="reason">
+            <h3>Open source</h3>
+            <p>Full source code on GitHub. Audit it, fork it, self-host it.</p>
+          </div>
+          <div class="reason">
+            <h3>Chinese model focus</h3>
+            <p>DeepSeek, Qwen, Doubao, GLM, Kimi, Step — all with native support.</p>
+          </div>
+          <div class="reason">
+            <h3>Same API format</h3>
+            <p>OpenAI-compatible. Change only the base_url and API key.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Switch in 2 minutes</h2>
+        </div>
+        
+        <pre class="code" set:html={`import openai
+
+# Before: OpenRouter
+client = openai.OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="your-openrouter-key"
+)
+
+# After: BurnCloud
+client = openai.OpenAI(
+    base_url="https://api.burncloud.com/v1",
+    api_key="your-burncloud-key"
+)
+
+# Everything else stays the same
+response = client.chat.completions.create(
+    model="deepseek-v4-flash",
+    messages=[{"role": "user", "content": "Hello"}]
+)`}></pre>
+      </div>
+    </section>
+
+    <section class="ctasec">
+      <div class="wrap">
+        <h2>Try BurnCloud today</h2>
+        <p class="cap">Zero fees. Open source. All Chinese models.</p>
+        <div class="btnrow">
+          <a href="#" class="btn btn-primary btn-lg">Start Free</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .hero{padding:56px 0 36px;}
+  .hero h1{font-size:clamp(32px,5vw,50px);letter-spacing:-.035em;line-height:1.06;}
+  .hero .sub{color:var(--muted);font-size:18px;margin-top:16px;}
+  
+  .quickcmp{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:30px;}
+  .quickcmp .qrow{display:grid;grid-template-columns:140px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .quickcmp .qrow:last-child{border-bottom:0;}
+  .quickcmp .qrow.head .qc{font-weight:700;font-size:16px;}
+  .quickcmp .qc{padding:15px 18px;font-size:14px;font-family:var(--mono);}
+  .quickcmp .qc.lab{color:var(--muted);font-weight:600;font-family:var(--sans);border-right:1px solid var(--border);}
+  .quickcmp .qc.or{background:#fef2f2;color:#b91c1c;}
+  .quickcmp .qc.bc{background:var(--green-tint);color:#15803d;font-weight:600;}
+  .quickcmp .qrow.head .qc.or{background:var(--surface);color:var(--text);font-family:var(--sans);}
+  .quickcmp .qrow.head .qc.bc{background:var(--surface);color:var(--text);font-family:var(--sans);}
+  
+  section.sec{padding:56px 0;border-top:1px solid var(--border);}
+  .sec-head{margin-bottom:26px;}
+  .sec-head h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:-.025em;}
+  
+  .reasons{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .reason{border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .reason h3{font-size:18px;margin-bottom:10px;}
+  .reason p{color:var(--muted);font-size:15px;line-height:1.6;}
+  
+  pre.code{background:var(--code-bg);padding:24px;border-radius:12px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.7;}
+  
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+  
+  @media (max-width:600px){
+    .quickcmp .qrow{grid-template-columns:100px 1fr 1fr;}
+    .reasons{grid-template-columns:1fr;}
+  }
+</style>

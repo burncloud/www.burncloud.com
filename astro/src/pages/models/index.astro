@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const chineseModels = [
+  { name: 'DeepSeek V4 Flash', slug: 'deepseek-v4-flash', input: '0.14', output: '0.28', context: '1M', speed: 'Fast' },
+  { name: 'DeepSeek V4 Pro', slug: 'deepseek-v4-pro', input: '0.435', output: '0.87', context: '1M', speed: 'Medium' },
+  { name: 'DeepSeek V3', slug: 'deepseek-v3', input: '0.24', output: '1.12', context: '128K', speed: 'Medium' }
+];
+
+const frontierModels = [
+  { name: 'Claude Sonnet 4.6', slug: 'claude-sonnet-4.6', input: '3.00', output: '15.00', context: '200K', speed: 'Medium' },
+  { name: 'GPT-5.4', slug: 'gpt-5.4', input: '2.50', output: '15.00', context: '128K', speed: 'Medium' }
+];
+---
+
+<BaseLayout title="AI Model Pricing Comparison 2026 | BurnCloud" description="Compare all LLM API prices in 2026. DeepSeek V4 at 0.14 USD per 1M, Claude, GPT, Gemini and Chinese models. One API key for every model.">
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Models</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="mhero">
+      <div class="wrap">
+        <h1>AI Model Pricing Comparison 2026</h1>
+        <p class="sub">All models available through a single BurnCloud API key. Pay per token, no markup.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Chinese Models</h2>
+        <p class="sec-desc">High quality at fraction of frontier prices. Open-weight, openly available.</p>
+        <div class="mgrid">
+          {chineseModels.map(model => (
+            <a class="mcard" href={`/models/${model.slug}`}>
+              <h3>{model.name}</h3>
+              <div class="prices">
+                <span class="input">Input: {model.input} USD/1M</span>
+                <span class="output">Output: {model.output} USD/1M</span>
+              </div>
+              <div class="specs">
+                <span class="spec">{model.context} context</span>
+                <span class="spec">{model.speed}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Frontier Models</h2>
+        <p class="sec-desc">Top-tier reasoning and capabilities from leading Western providers.</p>
+        <div class="mgrid">
+          {frontierModels.map(model => (
+            <a class="mcard" href={`/models/${model.slug}`}>
+              <h3>{model.name}</h3>
+              <div class="prices">
+                <span class="input">Input: {model.input} USD/1M</span>
+                <span class="output">Output: {model.output} USD/1M</span>
+              </div>
+              <div class="specs">
+                <span class="spec">{model.context} context</span>
+                <span class="spec">{model.speed}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ctasec">
+      <div class="wrap">
+        <h2>Access all models with one key</h2>
+        <p class="cap">Start free. No credit card required.</p>
+        <div class="btnrow">
+          <a href="#" class="btn btn-primary btn-lg">Get API Key</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .mhero{padding:56px 0 32px;border-bottom:1px solid var(--border);}
+  .mhero h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.035em;}
+  .mhero .sub{color:var(--muted);font-size:18px;margin-top:14px;}
+  
+  .sec{padding:56px 0;}
+  .sec h2{font-size:28px;letter-spacing:-.025em;margin-bottom:8px;}
+  .sec-desc{color:var(--muted);font-size:16px;margin-bottom:24px;}
+  
+  .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .mcard{border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color .15s,box-shadow .15s,transform .15s;}
+  .mcard:hover{border-color:#d4d4d8;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px);}
+  .mcard h3{font-size:16px;letter-spacing:-.02em;margin-bottom:12px;}
+  .mcard .prices{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+  .mcard .prices .input{font-family:var(--mono);font-size:14px;color:var(--green);font-weight:700;}
+  .mcard .prices .output{font-family:var(--mono);font-size:13px;color:var(--muted);}
+  .mcard .specs{display:flex;gap:12px;}
+  .mcard .spec{font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--surface);padding:4px 8px;border-radius:6px;}
+  
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+  
+  @media (max-width:900px){
+    .mgrid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .mgrid{grid-template-columns:1fr;}
+  }
+</style>

@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="BurnCloud — Open Source LLM API Gateway | Cheap Claude, GPT, DeepSeek API" description="Access Claude, GPT, Gemini, DeepSeek at lower cost. Open source, auditable, verified. One API key.">
+  <Nav />
+  
+  <span id="top"></span>
+  
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-h1">
+      <div class="wrap">
+        <h1 id="hero-h1">Don't trust us.<br>Verify us.</h1>
+        <p class="sub">The open source LLM gateway. Every line of code is public. Every request is auditable.</p>
+        <div class="pills">
+          <span class="pill">Claude</span>
+          <span class="pill">GPT</span>
+          <span class="pill">Gemini</span>
+          <span class="pill">DeepSeek</span>
+          <span class="pill">Qwen</span>
+          <span class="pill">Doubao</span>
+          <span class="pill">MiniMax</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#cta" class="btn btn-primary btn-lg">Start Free →</a>
+          <a href="#" class="btn btn-outline btn-lg">Read the Source Code</a>
+        </div>
+        <div class="verify-box">
+          <span class="vcheck" aria-hidden="true">✓</span>
+          <span class="vtext">Currently running: <strong>v1.2.3</strong> · <strong>sha256:7f3a…</strong> · Verified against GitHub</span>
+          <a href="#" class="vproof">View proof →</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== PROOF BAR ===== -->
+    <section class="proofbar" aria-label="Compatible frameworks">
+      <div class="wrap">
+        <p class="label">Works with every major framework</p>
+        <div class="frameworks">
+          <span>OpenAI SDK</span>
+          <span>LangChain</span>
+          <span>LlamaIndex</span>
+          <span>LiteLLM</span>
+          <span>Any HTTP client</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== PROBLEM ===== -->
+    <section class="sec" aria-labelledby="problem-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="problem-h2">The grey market is everywhere.</h2>
+          <p>17 proxy services caught substituting models in 2026.</p>
+        </div>
+        <div class="cards2">
+          <div class="pcard bad">
+            <h3>Typical Reseller</h3>
+            <ul>
+              <li><span class="ic">✗</span><span>Closed source</span></li>
+              <li><span class="ic">✗</span><span>Model substitution</span></li>
+              <li><span class="ic">✗</span><span>Prompt logging</span></li>
+              <li><span class="ic">✗</span><span>Stolen API keys</span></li>
+              <li><span class="ic">✗</span><span>Vanishes overnight</span></li>
+            </ul>
+          </div>
+          <div class="pcard good">
+            <h3>BurnCloud</h3>
+            <ul>
+              <li><span class="ic">✓</span><span>Fully open source</span></li>
+              <li><span class="ic">✓</span><span>Direct to official API</span></li>
+              <li><span class="ic">✓</span><span>Zero request storage</span></li>
+              <li><span class="ic">✓</span><span>Verified supplier accounts</span></li>
+              <li><span class="ic">✓</span><span>Self-hostable anytime</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== ARCHITECTURE ===== -->
+    <section class="sec" aria-labelledby="arch-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="arch-h2">One path. No detours.</h2>
+        </div>
+        <div class="flow">
+          <div class="flow-node">
+            <div class="fn-title">Your App</div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node verified">
+            <div class="fn-title">BurnCloud</div>
+            <div class="fn-sub">✓ verified</div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node">
+            <div class="fn-title">Official API</div>
+            <div class="fn-sub">Claude / GPT / DeepSeek</div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node">
+            <div class="fn-title">You</div>
+          </div>
+        </div>
+        <p class="flow-note"><strong>No logging. No modification. No third parties.</strong></p>
+      </div>
+    </section>
+    
+    <!-- ===== PRICING ===== -->
+    <section class="sec" id="pricing" aria-labelledby="pricing-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="pricing-h2">Transparent pricing.</h2>
+          <p>Official rates, minus the reseller markup. Updated from provider APIs.</p>
+        </div>
+        <div class="ptable-wrap">
+          <table class="pricing">
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col" class="num">Official</th>
+                <th scope="col" class="num">BurnCloud</th>
+                <th scope="col" class="num">Saving</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="model">Claude Sonnet 4.6</td><td class="num official">$3.00/1M</td><td class="num">$2.85/1M</td><td class="save">5%</td></tr>
+              <tr><td class="model">GPT-5.4</td><td class="num official">$15.00/1M</td><td class="num">$13.50/1M</td><td class="save">10%</td></tr>
+              <tr><td class="model">Gemini 3.1 Pro</td><td class="num official">$12.00/1M</td><td class="num">$10.80/1M</td><td class="save">10%</td></tr>
+              <tr><td class="model">DeepSeek V3</td><td class="num official">$0.27/1M</td><td class="num">$0.24/1M</td><td class="save">11%</td></tr>
+              <tr><td class="model">Qwen 3.5</td><td class="num official">$0.38/1M</td><td class="num">$0.34/1M</td><td class="save">11%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="price-cap">No hidden fees. No monthly minimums. Credits never expire.</p>
+      </div>
+    </section>
+    
+    <!-- ===== CODE ===== -->
+    <section class="sec" aria-labelledby="code-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="code-h2">One line change.</h2>
+          <p>Point your existing OpenAI client at BurnCloud. Nothing else moves.</p>
+        </div>
+        <div class="codewrap">
+          <pre class="code"><span class="cm"># Before</span>
+client = openai.<span class="fn">OpenAI</span>(api_key=<span class="str">"sk-..."</span>)
+
+<span class="cm"># After — only the base_url changes</span>
+client = openai.<span class="fn">OpenAI</span>(
+<span class="changed">    base_url=<span class="str">"https://api.burncloud.com/v1"</span>,  <span class="mk"># ← this line</span></span>
+    api_key=<span class="str">"your-burncloud-key"</span>
+)</pre>
+          <p class="code-cap"><span class="ic">✓</span> OpenAI SDK compatible</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== STEPS ===== -->
+    <section class="sec" aria-labelledby="steps-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="steps-h2">Up in two minutes.</h2>
+        </div>
+        <div class="steps3">
+          <div class="scard">
+            <span class="snum">01</span>
+            <h3>Create Account</h3>
+            <p>Email only. No credit card required.</p>
+          </div>
+          <div class="scard">
+            <span class="snum">02</span>
+            <h3>Add Credits</h3>
+            <p>Stripe checkout. Credits never expire.</p>
+          </div>
+          <div class="scard">
+            <span class="snum">03</span>
+            <h3>Start Building</h3>
+            <p>Copy your key, drop it in, ship faster.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== FAQ ===== -->
+    <section class="sec" id="faq" aria-labelledby="faq-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="faq-h2">Hard questions. Direct answers.</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>How do I know you're not logging my requests? <span class="sign">+</span></summary>
+            <div class="ans">You don't have to take our word for it. The gateway source code is public and there is no logging code. Read it: <a href="#">github.com/burncloud/burncloud</a></div>
+          </details>
+          <details>
+            <summary>What happens if BurnCloud shuts down? <span class="sign">+</span></summary>
+            <div class="ans">The gateway is open source. Self-host it in under 10 minutes. Your setup is never locked in.</div>
+          </details>
+          <details>
+            <summary>Is this a grey market service? <span class="sign">+</span></summary>
+            <div class="ans">No. Every supplier is verified, every request goes to official APIs, and our code is public. Resellers can't say the same.</div>
+          </details>
+          <details>
+            <summary>Why is it cheaper than official pricing? <span class="sign">+</span></summary>
+            <div class="ans">Multi-supplier competition drives prices down. No VC money to burn, no sales team to pay for.</div>
+          </details>
+          <details>
+            <summary>What's the cheapest model available? <span class="sign">+</span></summary>
+            <div class="ans">DeepSeek V3 at $0.24 per million tokens. Every model is billed per million tokens with no minimum spend.</div>
+          </details>
+          <details>
+            <summary>Can I self-host the gateway? <span class="sign">+</span></summary>
+            <div class="ans">Yes. It's a single Rust binary under an MIT license. Clone, build, and run it on your own infrastructure anytime.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== CTA ===== -->
+    <section class="ctasec" id="cta">
+      <div class="wrap">
+        <h2>Start building today.</h2>
+        <div style="margin-top: 28px;">
+          <a href="#" class="btn btn-primary btn-lg">Create Free Account →</a>
+        </div>
+        <p class="cap">No credit card · 2 min setup · Credits never expire</p>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="BurnCloud for Indie Developers | Cheap LLM API, Pay Per Token | 2026" description="Perfect LLM API for indie developers. Pay per token, no monthly fees, access Claude, GPT, DeepSeek from 0.10 USD per 1M. No commitment. Start free.">
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Indie Developers</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Pay per token. No monthly fees.</h1>
+        <p class="sub">Built for indie developers who ship fast and watch every dollar.</p>
+        <div class="btnrow">
+          <a href="#" class="btn btn-primary btn-lg">Start Free</a>
+          <span class="note">No credit card required</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="feat-grid">
+          <div class="feat-card">
+            <div class="feat-icon">0</div>
+            <h3>No monthly minimums</h3>
+            <p>Use 1M tokens or 1000M tokens. Same rates. No commitment.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">1</div>
+            <h3>All models, one key</h3>
+            <p>DeepSeek, Claude, GPT, Gemini. Single API. Zero markup.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">2</div>
+            <h3>Open source SDK</h3>
+            <p>Drop-in OpenAI compatible. Migrate in 2 minutes. Self-host if you want.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Real cost comparison</h2>
+        <p class="sec-desc">What you'd pay monthly for typical indie projects.</p>
+        <div class="cost-table">
+          <div class="cost-row head">
+            <div class="cost-cell">Project</div>
+            <div class="cost-cell">DeepSeek V4</div>
+            <div class="cost-cell">GPT-5.4</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-cell">Personal chatbot</div>
+            <div class="cost-cell hl">0.14 USD</div>
+            <div class="cost-cell">25.00 USD</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-cell">SaaS with AI features</div>
+            <div class="cost-cell hl">1.40 USD</div>
+            <div class="cost-cell">250.00 USD</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-cell">AI writing tool</div>
+            <div class="cost-cell hl">7.00 USD</div>
+            <div class="cost-cell">1,250.00 USD</div>
+          </div>
+          <div class="cost-row">
+            <div class="cost-cell">Code assistant</div>
+            <div class="cost-cell hl">0.42 USD</div>
+            <div class="cost-cell">17.50 USD</div>
+          </div>
+        </div>
+        <p class="table-note">Based on 10M input + 2M output tokens monthly for SaaS, scaled proportionally for other use cases.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>No lock-in. Ever.</h2>
+        <div class="lock-grid">
+          <div class="lock-item">
+            <h3>Open-source code</h3>
+            <p>Our SDK is MIT licensed. Fork it, modify it, self-host it.</p>
+          </div>
+          <div class="lock-item">
+            <h3>Portable data</h3>
+            <p>Export your logs anytime. No vendor lock-in on your prompts.</p>
+          </div>
+          <div class="lock-item">
+            <h3>Refund anytime</h3>
+            <p>Unused credits refunded within 30 days. No questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec steps-sec">
+      <div class="wrap">
+        <h2>Start shipping in 60 seconds</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h3>Create account</h3>
+            <p>Sign up with email. No credit card required to start.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h3>Add credits</h3>
+            <p>Stripe checkout. Credits never expire. 5 USD minimum.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h3>Ship faster</h3>
+            <p>Copy your key, point your OpenAI SDK, deploy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctasec">
+      <div class="wrap">
+        <h2>Stop overpaying for AI</h2>
+        <p class="cap">Join indie developers saving 100x on API costs.</p>
+        <div class="btnrow">
+          <a href="#" class="btn btn-primary btn-lg">Get Started Free</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .hero{padding:64px 0 48px;text-align:center;border-bottom:1px solid var(--border);}
+  .hero h1{font-size:clamp(36px,6vw,56px);letter-spacing:-.04em;}
+  .hero .sub{color:var(--muted);font-size:20px;margin-top:16px;}
+  .hero .btnrow{margin-top:32px;display:flex;align-items:center;justify-content:center;gap:16px;}
+  .hero .note{font-size:14px;color:var(--muted);font-family:var(--mono);}
+  
+  .sec{padding:56px 0;border-top:1px solid var(--border);}
+  .sec h2{font-size:28px;letter-spacing:-.025em;margin-bottom:8px;}
+  .sec-desc{color:var(--muted);font-size:16px;margin-bottom:24px;}
+  
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .feat-card{border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center;}
+  .feat-icon{font-size:48px;font-weight:200;color:var(--accent);line-height:1;margin-bottom:16px;}
+  .feat-card h3{font-size:18px;margin-bottom:12px;}
+  .feat-card p{color:var(--muted);font-size:15px;line-height:1.6;}
+  
+  .cost-table{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .cost-row{display:grid;grid-template-columns:200px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .cost-row:last-child{border-bottom:0;}
+  .cost-row.head{background:var(--surface);}
+  .cost-cell{padding:14px 18px;font-size:14px;}
+  .cost-row.head .cost-cell{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;}
+  .cost-cell.hl{font-family:var(--mono);color:var(--green);font-weight:700;}
+  .table-note{margin-top:14px;font-size:13px;color:var(--muted);font-family:var(--mono);}
+  
+  .lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .lock-item{padding:24px;border:1px solid var(--border);border-radius:12px;}
+  .lock-item h3{font-size:17px;margin-bottom:10px;}
+  .lock-item p{color:var(--muted);font-size:15px;line-height:1.6;}
+  
+  .steps-sec{background:var(--surface);}
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+  .step-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:28px;}
+  .step-num{font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:12px;}
+  .step-card h3{font-size:18px;margin-bottom:10px;}
+  .step-card p{color:var(--muted);font-size:15px;line-height:1.6;}
+  
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+  
+  @media (max-width:800px){
+    .feat-grid,.lock-grid,.steps-grid{grid-template-columns:1fr;}
+    .cost-row{grid-template-columns:140px 1fr 1fr;}
+  }
+</style>

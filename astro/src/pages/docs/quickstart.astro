@@ -1,0 +1,633 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = "Quick Start Guide | BurnCloud API Setup in 2 Minutes | LLM Gateway";
+const description = "Get started with BurnCloud in 2 minutes. Create account, add credits, copy API key. Works with OpenAI SDK, LangChain, LlamaIndex.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav />
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span>Docs</span>
+      <span class="sep">/</span>
+      <span class="cur">Quick Start</span>
+    </div>
+  </nav>
+
+  <div class="dhero">
+    <div class="wrap">
+      <div class="eyebrow">Docs</div>
+      <h1>Quick Start Guide</h1>
+      <p>From zero to your first API call in 2 minutes.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <div class="layout">
+        <article class="main">
+          <section class="step" id="step1">
+            <span class="stepnum">STEP 1</span>
+            <h2>Create your account</h2>
+            <ol class="steplist">
+              <li>Go to <code>ai.burncloud.com</code></li>
+              <li>Click <strong>Sign Up</strong></li>
+              <li>Enter your email — no credit card needed</li>
+              <li>Verify your email</li>
+            </ol>
+          </section>
+
+          <section class="step" id="step2">
+            <span class="stepnum">STEP 2</span>
+            <h2>Add credits</h2>
+            <ol class="steplist">
+              <li>Click <strong>Add Credits</strong> in the dashboard</li>
+              <li>Enter an amount (minimum <code>\&#36;5</code>)</li>
+              <li>Pay via Stripe</li>
+              <li>Credits appear instantly</li>
+            </ol>
+          </section>
+
+          <section class="step" id="step3">
+            <span class="stepnum">STEP 3</span>
+            <h2>Get your API key</h2>
+            <ol class="steplist">
+              <li>Go to <strong>API Keys</strong> in the dashboard</li>
+              <li>Click <strong>Create New Key</strong></li>
+              <li>Copy your key (shown once)</li>
+            </ol>
+          </section>
+
+          <section class="step" id="step4">
+            <span class="stepnum">STEP 4</span>
+            <h2>Make your first API call</h2>
+            <p>Point the OpenAI SDK at the BurnCloud base URL and call any model.</p>
+            <div class="codecard">
+              <div class="codetabs" role="tablist" aria-label="Code language">
+                <button class="codetab active" data-pane="py" role="tab">Python</button>
+                <button class="codetab" data-pane="js" role="tab">JavaScript</button>
+                <button class="codetab" data-pane="curl" role="tab">cURL</button>
+              </div>
+              <div class="codebody">
+                <button class="copybtn" data-target="py">Copy</button>
+                <div class="codepane active" id="pane-py">
+                  <pre class="code" set:html={`<span class="kw">import</span> openai
+
+client = openai.<span class="fn">OpenAI</span>(
+    base_url=<span class="str">"https://api.burncloud.com/v1"</span>,
+    api_key=<span class="str">"your-burncloud-key"</span>
+)
+
+response = client.chat.completions.<span class="fn">create</span>(
+    model=<span class="str">"deepseek-v4"</span>,
+    messages=[
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+<span class="fn">print</span>(response.choices[0].message.content)`}></pre>
+                </div>
+                <div class="codepane" id="pane-js">
+                  <pre class="code" set:html={`<span class="kw">import</span> OpenAI <span class="kw">from</span> <span class="str">"openai"</span>;
+
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">OpenAI</span>({
+  baseURL: <span class="str">"https://api.burncloud.com/v1"</span>,
+  apiKey: <span class="str">"your-burncloud-key"</span>,
+});
+
+<span class="kw">const</span> response = <span class="kw">await</span> client.chat.completions.<span class="fn">create</span>({
+  model: <span class="str">"deepseek-v4"</span>,
+  messages: [{ role: "user", content: "Hello!" }],
+});
+console.<span class="fn">log</span>(response.choices[0].message.content);`}></pre>
+                </div>
+                <div class="codepane" id="pane-curl">
+                  <pre class="code" set:html={`curl https://api.burncloud.com/v1/chat/completions \\
+  -H "Authorization: Bearer *** \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"deepseek-v4","messages":[{"role":"user","content":"Hello!"}]}'`}></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="step" id="models">
+            <h2>Choose your model</h2>
+            <div class="reftable-wrap">
+              <table class="ref">
+                <thead>
+                  <tr>
+                    <th>Use case</th>
+                    <th>Recommended model</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="use">Cheapest option</td>
+                    <td class="mdl">step-3.5-flash</td>
+                    <td class="price">\\&#36;0.10/1M</td>
+                  </tr>
+                  <tr>
+                    <td class="use">Best value</td>
+                    <td class="mdl">deepseek-v4</td>
+                    <td class="price">\\&#36;0.14/1M</td>
+                  </tr>
+                  <tr>
+                    <td class="use">Best quality</td>
+                    <td class="mdl">claude-opus-4-7</td>
+                    <td class="price">\&#36;5.00/1M</td>
+                  </tr>
+                  <tr>
+                    <td class="use">Long context</td>
+                    <td class="mdl">gemini-3-1-pro</td>
+                    <td class="price">\&#36;2.00/1M</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="reflink" href="/models">See all models →</a>
+          </section>
+
+          <section class="step" id="next">
+            <h2>Next steps</h2>
+            <ul class="nextsteps">
+              <li><a href="/models"><span>Browse all supported models</span><span class="nd">/models</span></a></li>
+              <li><a href="/pricing"><span>Full pricing details</span><span class="nd">/pricing</span></a></li>
+              <li><a href="/docs/quickstart"><span>Quickstart</span><span class="nd">/docs/quickstart</span></a></li>
+              <li><a href="/security"><span>How we keep your data safe</span><span class="nd">/security</span></a></li>
+            </ul>
+          </section>
+        </article>
+
+        <aside class="sidebar" aria-label="Page tools">
+          <div class="sbox cta">
+            <div class="big">Start Free</div>
+            <a href="#" class="btn btn-primary btn-block">Create Account →</a>
+            <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;">No credit card required</p>
+          </div>
+          <div class="sbox toc-box">
+            <div class="sb-t">On this page</div>
+            <ul class="toc" id="toc">
+              <li><a href="#step1"><span class="tn">01</span> Create account</a></li>
+              <li><a href="#step2"><span class="tn">02</span> Add credits</a></li>
+              <li><a href="#step3"><span class="tn">03</span> Get API key</a></li>
+              <li><a href="#step4"><span class="tn">04</span> First API call</a></li>
+              <li><a href="#models"><span class="tn">05</span> Choose your model</a></li>
+              <li><a href="#next"><span class="tn">06</span> Next steps</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script define:vars={{}}>
+    // Code examples for copy functionality
+    const codeExamples = {
+      py: `import openai
+
+client = openai.OpenAI(
+    base_url="https://api.burncloud.com/v1",
+    api_key="your-burncloud-key"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-v4",
+    messages=[
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+print(response.choices[0].message.content)`,
+      js: `import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://api.burncloud.com/v1",
+  apiKey: "your-burncloud-key",
+});
+
+const response = await client.chat.completions.create({
+  model: "deepseek-v4",
+  messages: [{ role: "user", content: "Hello!" }],
+});
+console.log(response.choices[0].message.content);`,
+      curl: `curl https://api.burncloud.com/v1/chat/completions \\
+  -H "Authorization: Bearer ***" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"deepseek-v4","messages":[{"role":"user","content":"Hello!"}]}'`
+    };
+
+    const tabs = document.querySelectorAll('.codetab');
+    const copybtn = document.querySelector('.copybtn');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      const pane = t.dataset.pane;
+      document.querySelectorAll('.codepane').forEach(p => p.classList.remove('active'));
+      document.getElementById('pane-' + pane).classList.add('active');
+      copybtn.dataset.target = pane;
+      copybtn.textContent = 'Copy';
+      copybtn.classList.remove('done');
+    }));
+    copybtn.addEventListener('click', async () => {
+      const target = copybtn.dataset.target;
+      const raw = codeExamples[target];
+      try { await navigator.clipboard.writeText(raw); }
+      catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = raw;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (_) { }
+        document.body.removeChild(ta);
+      }
+      copybtn.textContent = 'Copied';
+      copybtn.classList.add('done');
+      setTimeout(() => { copybtn.textContent = 'Copy'; copybtn.classList.remove('done'); }, 1600);
+    });
+
+    const tocLinks = [...document.querySelectorAll('#toc a')];
+    const secs = tocLinks.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            tocLinks.forEach(l => l.classList.remove('active'));
+            const i = secs.indexOf(e.target);
+            if (i > -1 && tocLinks[i]) tocLinks[i].classList.add('active');
+          }
+        });
+      }, { rootMargin: '-72px 0px -70% 0px' });
+      secs.forEach(s => s && obs.observe(s));
+    }
+  </script>
+</BaseLayout>
+
+<style is:inline>
+  /* Breadcrumb */
+  .crumb {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .crumb .wrap {
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: var(--mono);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .crumb a:hover {
+    color: var(--text);
+  }
+  .crumb .sep {
+    opacity: 0.5;
+  }
+  .crumb .cur {
+    color: var(--text);
+  }
+
+  /* Docs Hero */
+  .dhero {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dhero .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .dhero h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -0.035em;
+  }
+  .dhero p {
+    color: var(--muted);
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    padding: 48px 0 72px;
+    align-items: start;
+  }
+  .main h2 {
+    font-size: 24px;
+    letter-spacing: -0.025em;
+    scroll-margin-top: 76px;
+    margin-bottom: 14px;
+  }
+  .main section.step {
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 44px;
+  }
+  .main section.step:last-of-type {
+    border-bottom: 0;
+  }
+  .stepnum {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .main p {
+    color: #3a3a45;
+  }
+  .main p + p {
+    margin-top: 12px;
+  }
+  .steplist {
+    list-style: none;
+    counter-reset: s;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .steplist li {
+    counter-increment: s;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 15px;
+  }
+  .steplist li::before {
+    content: counter(s);
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-tint);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  .steplist li code {
+    font-family: var(--mono);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 0.92em;
+  }
+
+  /* Code tabs */
+  .codecard {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 18px;
+  }
+  .codetabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .codetab {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 11px 18px;
+    cursor: pointer;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    background: transparent;
+    transition: color 0.15s, background 0.15s;
+  }
+  .codetab:hover {
+    color: var(--text);
+  }
+  .codetab.active {
+    color: var(--text);
+    background: var(--bg);
+    font-weight: 600;
+  }
+  .codebody {
+    position: relative;
+  }
+  .codepane {
+    display: none;
+  }
+  .codepane.active {
+    display: block;
+  }
+  pre.code {
+    background: var(--code-bg);
+    padding: 22px 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-x: auto;
+    margin: 0;
+  }
+  pre.code .cm {
+    color: var(--muted);
+  }
+  pre.code .str {
+    color: var(--green);
+  }
+  pre.code .fn {
+    color: var(--accent);
+  }
+  pre.code .kw {
+    color: #9333ea;
+  }
+  .copybtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+    z-index: 2;
+  }
+  .copybtn:hover {
+    color: var(--text);
+    border-color: var(--muted);
+  }
+  .copybtn.done {
+    color: var(--green);
+    border-color: var(--green);
+  }
+
+  /* Model ref table */
+  .reftable-wrap {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+  table.ref {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+  table.ref th,
+  table.ref td {
+    padding: 13px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  table.ref th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    background: var(--surface);
+    font-weight: 600;
+  }
+  table.ref tr:last-child td {
+    border-bottom: 0;
+  }
+  table.ref .use {
+    font-weight: 600;
+  }
+  table.ref .mdl {
+    font-family: var(--mono);
+  }
+  table.ref .price {
+    font-family: var(--mono);
+    color: var(--green);
+    font-weight: 600;
+  }
+  .reflink {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .reflink:hover {
+    gap: 9px;
+  }
+
+  /* Next steps */
+  .nextsteps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    margin-top: 6px;
+  }
+  .nextsteps li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.15s;
+  }
+  .nextsteps li a:hover {
+    color: var(--accent);
+  }
+  .nextsteps li a .nd {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .sbox {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .sbox.cta {
+    background: var(--accent-tint);
+    border-color: #dfe3ff;
+  }
+  .sbox .sb-t {
+    font-size: 12px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .sbox.cta .big {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .toc {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .toc a {
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.15s;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .toc a:hover,
+  .toc a.active {
+    color: var(--text);
+  }
+  .toc a .tn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .sidebar {
+      position: static;
+      margin-top: 40px;
+    }
+    .sbox.toc-box {
+      display: none;
+    }
+  }
+</style>

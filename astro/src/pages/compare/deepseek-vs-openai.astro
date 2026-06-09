@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<BaseLayout title="DeepSeek V4 vs OpenAI GPT-5.4: Cost & Performance 2026 | BurnCloud" description="DeepSeek V4 at 0.14 USD per 1M vs GPT-5.4 at 2.50 USD per 1M. 17x cheaper. Full comparison with benchmarks, speed tests, and migration guide.">
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/compare">Compare</a>
+      <span class="sep">/</span>
+      <span class="cur">DeepSeek vs OpenAI</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>DeepSeek V4 vs OpenAI GPT-5.4</h1>
+        <p class="sub">Side-by-side cost, quality, speed and privacy comparison for 2026.</p>
+        
+        <div class="quick-win">
+          <div class="win-row">
+            <div class="win-label">Cost</div>
+            <div class="win-deepseek">DeepSeek wins</div>
+            <div class="win-note">17x cheaper input</div>
+          </div>
+          <div class="win-row">
+            <div class="win-label">Quality</div>
+            <div class="win-tie">Comparable</div>
+            <div class="win-note">Similar benchmarks</div>
+          </div>
+          <div class="win-row">
+            <div class="win-label">Speed</div>
+            <div class="win-deepseek">DeepSeek wins</div>
+            <div class="win-note">2x faster latency</div>
+          </div>
+          <div class="win-row">
+            <div class="win-label">Privacy</div>
+            <div class="win-deepseek">DeepSeek wins</div>
+            <div class="win-note">Open-source code</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Price comparison</h2>
+        <div class="price-table">
+          <div class="price-row head">
+            <div class="price-cell">Metric</div>
+            <div class="price-cell">DeepSeek V4</div>
+            <div class="price-cell">GPT-5.4</div>
+          </div>
+          <div class="price-row">
+            <div class="price-cell">Input price</div>
+            <div class="price-cell hl">0.14 USD/1M</div>
+            <div class="price-cell">2.50 USD/1M</div>
+          </div>
+          <div class="price-row">
+            <div class="price-cell">Output price</div>
+            <div class="price-cell hl">0.28 USD/1M</div>
+            <div class="price-cell">15.00 USD/1M</div>
+          </div>
+          <div class="price-row">
+            <div class="price-cell">Monthly cost (10M tokens)</div>
+            <div class="price-cell hl">1.40 USD</div>
+            <div class="price-cell">25.00 USD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>Migrate in 2 minutes</h2>
+        <pre class="code" set:html={`import openai
+
+# Before: OpenAI
+client = openai.OpenAI(
+    base_url="https://api.openai.com/v1",
+    api_key="sk-..."
+)
+
+# After: BurnCloud + DeepSeek
+client = openai.OpenAI(
+    base_url="https://api.burncloud.com/v1",
+    api_key="your-burncloud-key"
+)
+
+# Change model string only
+response = client.chat.completions.create(
+    model="deepseek-v4-flash",  # was "gpt-5.4"
+    messages=[{"role": "user", "content": "Hello"}]
+)`}></pre>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <h2>When to choose each</h2>
+        <div class="when-grid">
+          <div class="when-box">
+            <h3>Choose DeepSeek V4 for</h3>
+            <ul>
+              <li>High-volume applications</li>
+              <li>Code generation</li>
+              <li>Cost-sensitive projects</li>
+              <li>Chinese language tasks</li>
+              <li>Self-hosting needs</li>
+            </ul>
+          </div>
+          <div class="when-box">
+            <h3>Choose GPT-5.4 for</h3>
+            <ul>
+              <li>Ecosystem integrations</li>
+              <li>Official API support</li>
+              <li>Complex multi-step reasoning</li>
+              <li>Enterprise compliance</li>
+              <li>Western language focus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctasec">
+      <div class="wrap">
+        <h2>Try DeepSeek V4 today</h2>
+        <p class="cap">Save 17x on your API costs. Same SDK, same code.</p>
+        <div class="btnrow">
+          <a href="#" class="btn btn-primary btn-lg">Start Free</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .hero{padding:56px 0 32px;border-bottom:1px solid var(--border);}
+  .hero h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.035em;}
+  .hero .sub{color:var(--muted);font-size:18px;margin-top:14px;}
+  
+  .quick-win{border:1px solid var(--border);border-radius:12px;margin-top:28px;overflow:hidden;}
+  .win-row{display:grid;grid-template-columns:100px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .win-row:last-child{border-bottom:0;}
+  .win-label{padding:14px 16px;font-family:var(--mono);font-size:12px;color:var(--muted);background:var(--surface);}
+  .win-deepseek{padding:14px 16px;font-weight:600;color:var(--green);background:var(--green-tint);}
+  .win-tie{padding:14px 16px;font-weight:600;color:var(--text);background:var(--surface);}
+  .win-note{padding:14px 16px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+  
+  .sec{padding:56px 0;border-top:1px solid var(--border);}
+  .sec h2{font-size:28px;letter-spacing:-.025em;margin-bottom:24px;}
+  
+  .price-table{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .price-row{display:grid;grid-template-columns:180px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .price-row:last-child{border-bottom:0;}
+  .price-row.head{background:var(--surface);}
+  .price-cell{padding:14px 18px;font-size:14px;}
+  .price-row.head .price-cell{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;}
+  .price-cell.hl{font-family:var(--mono);color:var(--green);font-weight:700;}
+  
+  pre.code{background:var(--code-bg);padding:24px;border-radius:12px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.7;}
+  
+  .when-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .when-box{border:1px solid var(--border);border-radius:12px;padding:24px;}
+  .when-box h3{font-size:18px;margin-bottom:16px;}
+  .when-box ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .when-box li{font-size:15px;line-height:1.5;position:relative;padding-left:20px;}
+  .when-box li::before{content:"";position:absolute;left:6px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+  
+  @media (max-width:600px){
+    .when-grid{grid-template-columns:1fr;}
+    .win-row{grid-template-columns:80px 1fr 1fr;}
+  }
+</style>

@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const articles = [
+  {
+    slug: 'deepseek-v4-api-guide',
+    title: 'DeepSeek V4 API Guide: Complete Setup 2026',
+    excerpt: 'Everything you need to start calling DeepSeek V4 through an OpenAI-compatible endpoint.',
+    tag: 'Tutorial',
+    tagClass: 'tutorial',
+    date: 'May 28, 2026',
+    readTime: '8 min',
+    featured: true
+  },
+  {
+    slug: 'cheapest-llm-api-2026',
+    title: 'Cheapest LLM API in 2026 - Complete Price Comparison',
+    excerpt: 'Find the cheapest LLM API in 2026. Compare DeepSeek, Qwen, GPT, Claude prices.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 8, 2026',
+    readTime: '6 min',
+    featured: false
+  },
+  {
+    slug: 'chinese-ai-models',
+    title: 'Chinese AI Models: DeepSeek vs Qwen vs Doubao',
+    excerpt: 'A head-to-head comparison of China top open-weight LLMs in 2026.',
+    tag: 'Comparison',
+    tagClass: 'comparison',
+    date: 'Jun 2, 2026',
+    readTime: '10 min',
+    featured: false
+  },
+  {
+    slug: 'cut-ai-costs',
+    title: 'How to Cut Your LLM API Costs by 80%',
+    excerpt: 'Five proven tactics to reduce your LLM spend without sacrificing quality.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 3, 2026',
+    readTime: '7 min',
+    featured: false
+  },
+  {
+    slug: 'openai-sdk-compatible',
+    title: 'OpenAI SDK Compatible APIs: Full List 2026',
+    excerpt: 'Use Claude, Gemini, DeepSeek and more with the OpenAI SDK. Just change two lines.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 1, 2026',
+    readTime: '7 min',
+    featured: false
+  },
+  {
+    slug: 'cheapest-llm-api',
+    title: 'Cheapest LLM API 2026: Complete Price Comparison',
+    excerpt: 'Every major LLM API ranked by real cost per 1M tokens.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 4, 2026',
+    readTime: '6 min',
+    featured: false
+  }
+];
+
+const featured = articles.find(a => a.featured);
+const regular = articles.filter(a => !a.featured);
+---
+
+<BaseLayout title="BurnCloud Blog | LLM API Guides, Tutorials & AI News 2026" description="Developer guides, tutorials and industry analysis on LLM APIs. Learn how to reduce AI costs, compare models, and build better AI applications.">
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Blog</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="bhero" aria-labelledby="b-h1">
+      <div class="wrap">
+        <h1 id="b-h1">BurnCloud Blog</h1>
+        <p>Guides, tutorials and analysis for developers building with LLMs.</p>
+        <div class="cats" id="cats" role="tablist" aria-label="Filter by category">
+          <button class="cat active" data-cat="all">All</button>
+          <button class="cat" data-cat="tutorial">Tutorials</button>
+          <button class="cat" data-cat="comparison">Comparisons</button>
+          <button class="cat" data-cat="guide">Guides</button>
+        </div>
+      </div>
+    </section>
+
+    {featured && (
+      <section aria-label="Featured article">
+        <div class="wrap">
+          <a class="featured" href={`/blog/${featured.slug}`} data-cat={featured.tagClass}>
+            <div class="fimg"><span class="glyph">DeepSeek V4</span></div>
+            <div class="fbody">
+              <span class={`tag ${featured.tagClass}`}>{featured.tag}</span>
+              <h2>{featured.title}</h2>
+              <p class="excerpt">{featured.excerpt}</p>
+              <div class="meta">{featured.date} · {featured.readTime} read</div>
+              <span class="readmore">Read more</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    )}
+
+    <section>
+      <div class="wrap">
+        <div class="gridhead">
+          <h2>All Articles</h2>
+        </div>
+        <div class="agrid">
+          {regular.map(article => (
+            <a class="acard" href={`/blog/${article.slug}`} data-cat={article.tagClass}>
+              <span class={`tag ${article.tagClass}`}>{article.tag}</span>
+              <h3>{article.title}</h3>
+              <p class="excerpt">{article.excerpt}</p>
+              <div class="meta">
+                <span>{article.date}</span>
+                <span class="read">Read</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ctasec" id="cta" aria-labelledby="cta-h2">
+      <div class="wrap">
+        <h2 id="cta-h2">Start building with BurnCloud</h2>
+        <p class="cap">One API key for every model</p>
+        <div class="btnrow"><a href="#" class="btn btn-primary btn-lg">Start Free</a></div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .bhero{padding:56px 0 28px;}
+  .bhero h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.035em;}
+  .bhero p{color:var(--muted);font-size:18px;margin-top:14px;max-width:560px;}
+  
+  .cats{display:flex;gap:8px;margin-top:28px;flex-wrap:wrap;}
+  .cat{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:8px 16px;cursor:pointer;transition:all .15s;}
+  .cat:hover{border-color:var(--muted);color:var(--text);}
+  .cat.active{background:var(--text);color:#fff;border-color:var(--text);}
+  
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:999px;}
+  .tag.tutorial{color:#2563eb;background:#eff6ff;}
+  .tag.comparison{color:#7c3aed;background:#f5f3ff;}
+  .tag.guide{color:#16a34a;background:#f0fdf4;}
+  
+  .featured{margin-top:40px;border:1px solid var(--border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;transition:border-color .15s,box-shadow .15s;}
+  .featured:hover{border-color:#d4d4d8;box-shadow:0 6px 24px rgba(0,0,0,.06);}
+  .featured .fimg{background:linear-gradient(135deg,#eef2ff,#f5f3ff);display:flex;align-items:center;justify-content:center;min-height:280px;}
+  .featured .fimg .glyph{font-family:var(--mono);font-size:18px;color:var(--accent);font-weight:700;letter-spacing:.05em;border:1px solid #dfe3ff;background:rgba(255,255,255,.7);padding:10px 16px;border-radius:10px;}
+  .featured .fbody{padding:36px 38px;display:flex;flex-direction:column;justify-content:center;}
+  .featured h2{font-size:clamp(22px,3vw,30px);margin:16px 0 12px;letter-spacing:-.025em;}
+  .featured .excerpt{color:var(--muted);font-size:15px;line-height:1.6;}
+  .featured .meta{margin-top:20px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+  .featured .readmore{margin-top:18px;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .featured:hover .readmore{gap:9px;}
+  
+  .gridhead{margin:64px 0 24px;}
+  .gridhead h2{font-size:22px;letter-spacing:-.02em;}
+  
+  .agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .acard{border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s;}
+  .acard:hover{border-color:#d4d4d8;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px);}
+  .acard h3{font-size:18px;margin:14px 0 10px;letter-spacing:-.02em;}
+  .acard .excerpt{color:var(--muted);font-size:14px;line-height:1.55;flex:1;}
+  .acard .meta{margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;}
+  .acard .meta .read{color:var(--accent);font-weight:600;}
+  
+  .ctasec{background:var(--accent-tint);text-align:center;padding:64px 0;margin-top:72px;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:14px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:24px;}
+  
+  @media (max-width:860px){
+    .agrid{grid-template-columns:1fr 1fr;}
+    .featured{grid-template-columns:1fr;}
+    .featured .fimg{min-height:180px;}
+  }
+  @media (max-width:560px){
+    .agrid{grid-template-columns:1fr;}
+  }
+</style>

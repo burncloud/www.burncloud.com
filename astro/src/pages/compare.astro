@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const MODELS = [
+  { name:"DeepSeek V4 Flash", prov:"DeepSeek", input:0.14, output:0.28, ctx:"128K", maxOut:"16K", speed:3, speedLabel:"Fast", best:"Code, high-volume" },
+  { name:"DeepSeek V4 Pro", prov:"DeepSeek", input:0.435, output:0.87, ctx:"1M", maxOut:"32K", speed:2, speedLabel:"Medium", best:"Reasoning at low cost" },
+  { name:"Step 3.5 Flash", prov:"StepFun", input:0.10, output:0.40, ctx:"128K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Cheapest, fast replies" },
+  { name:"Kimi K2.6", prov:"Moonshot", input:0.50, output:2.00, ctx:"1M", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Long context" },
+  { name:"Qwen 3.5", prov:"Alibaba", input:0.38, output:1.52, ctx:"128K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Multilingual" },
+  { name:"GLM-5.1", prov:"Zhipu", input:0.45, output:1.80, ctx:"256K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Agents" },
+  { name:"Claude Haiku 4.5", prov:"Anthropic", input:0.25, output:1.25, ctx:"200K", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Quick frontier tasks" },
+  { name:"Claude Sonnet 4.6", prov:"Anthropic", input:3.00, output:15.00, ctx:"200K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Writing, balanced reasoning" },
+  { name:"Claude Opus 4.7", prov:"Anthropic", input:5.00, output:25.00, ctx:"200K", maxOut:"32K", speed:1, speedLabel:"Slow", best:"Hardest reasoning" },
+  { name:"GPT-5.4", prov:"OpenAI", input:2.50, output:15.00, ctx:"128K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Broad tasks, ecosystem" },
+  { name:"GPT-5.5", prov:"OpenAI", input:5.00, output:30.00, ctx:"128K", maxOut:"16K", speed:1, speedLabel:"Slow", best:"Top OpenAI quality" },
+  { name:"Gemini 2.5 Flash", prov:"Google", input:0.30, output:2.50, ctx:"1M", maxOut:"8K", speed:3, speedLabel:"Fast", best:"Cheap long context" },
+  { name:"Gemini 3.1 Pro", prov:"Google", input:2.00, output:12.00, ctx:"1M", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Long-doc analysis" },
+  { name:"Grok 4.1", prov:"xAI", input:3.00, output:15.00, ctx:"128K", maxOut:"16K", speed:2, speedLabel:"Medium", best:"Realtime knowledge" }
+];
+---
+
+<BaseLayout title="Compare LLM Models Side by Side 2026 | Claude vs GPT vs DeepSeek | BurnCloud" description="Compare Claude, GPT-5.5, DeepSeek V4 and more side by side. Price, speed, context window. Find the best model for your use case.">
+  <Nav />
+
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <span class="cur">Compare</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="chero" aria-labelledby="c-h1">
+      <div class="wrap">
+        <h1 id="c-h1">Compare AI models side by side</h1>
+        <p>Find the best and cheapest model for your exact use case.</p>
+      </div>
+    </section>
+
+    <section aria-label="Model comparator">
+      <div class="wrap">
+        <div class="comparator">
+          <div class="picker">
+            <div class="selwrap">
+              <label for="selA">Model A</label>
+              <select id="selA" aria-label="Select model A"></select>
+            </div>
+            <div class="vs-pill" aria-hidden="true">vs</div>
+            <div class="selwrap">
+              <label for="selB">Model B</label>
+              <select id="selB" aria-label="Select model B"></select>
+            </div>
+          </div>
+          <div class="ctable" id="ctable"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="pop-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="pop-h2">Most compared pairs</h2>
+          <p>Jump straight to a detailed head-to-head.</p>
+        </div>
+        <div class="pairgrid">
+          <a class="pair" href="/compare/deepseek-vs-openai">
+            <div class="pp">DeepSeek V4 vs OpenAI GPT-5.4</div>
+            <div class="px">17x cheaper input</div>
+            <span class="go">Compare</span>
+          </a>
+          <a class="pair" href="#">
+            <div class="pp">Claude Sonnet 4.6 vs GPT-5.4</div>
+            <div class="px">frontier head-to-head</div>
+            <span class="go">Compare</span>
+          </a>
+          <a class="pair" href="/alternatives/openrouter">
+            <div class="pp">BurnCloud vs OpenRouter</div>
+            <div class="px">0 percent vs 5.5 percent markup</div>
+            <span class="go">Compare</span>
+          </a>
+          <a class="pair" href="#">
+            <div class="pp">DeepSeek V4 vs Claude Sonnet</div>
+            <div class="px">value vs reasoning</div>
+            <span class="go">Compare</span>
+          </a>
+          <a class="pair" href="#">
+            <div class="pp">BurnCloud vs SiliconFlow</div>
+            <div class="px">open source gateway</div>
+            <span class="go">Compare</span>
+          </a>
+          <a class="pair" href="#">
+            <div class="pp">Gemini 3.1 Pro vs GPT-5.4</div>
+            <div class="px">1M context vs ecosystem</div>
+            <span class="go">Compare</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="case-h2">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="case-h2">Best model by use case</h2>
+          <p>A quick map from what you are building to the model that fits.</p>
+        </div>
+        <div class="uctable-wrap">
+          <table class="uc">
+            <thead>
+              <tr><th scope="col">Use case</th><th scope="col">Best model</th><th scope="col">Price</th><th scope="col">Why</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="usecase">Code generation</td><td class="best">DeepSeek V4</td><td class="price">0.14 USD per 1M</td><td class="why">Best price/quality ratio</td></tr>
+              <tr><td class="usecase">Long documents</td><td class="best">Gemini 3.1 Pro</td><td class="price">2.00 USD per 1M</td><td class="why">1M-token context window</td></tr>
+              <tr><td class="usecase">Complex reasoning</td><td class="best">Claude Opus 4.7</td><td class="price">5.00 USD per 1M</td><td class="why">Strongest reasoning</td></tr>
+              <tr><td class="usecase">Fast responses</td><td class="best">Step 3.5 Flash</td><td class="price">0.10 USD per 1M</td><td class="why">Cheapest and low latency</td></tr>
+              <tr><td class="usecase">Creative writing</td><td class="best">Claude Sonnet 4.6</td><td class="price">3.00 USD per 1M</td><td class="why">Best prose quality</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctasec" id="cta" aria-labelledby="cta-h2">
+      <div class="wrap">
+        <h2 id="cta-h2">Access any model via BurnCloud</h2>
+        <p class="cap">One API key - Lowest price - Open source</p>
+        <div class="btnrow"><a href="#" class="btn btn-primary btn-lg">Start Free</a></div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script define:vars={{ MODELS }}>
+    const per1m = (n) => {
+      const r = Math.round(n * 1000);
+      return "\$" + (r % 10 === 0 ? (r / 1000).toFixed(2) : (r / 1000).toFixed(3)) + "/1M";
+    };
+    const ctxNum = (s) => s === "1M" ? 1000 : parseInt(s);
+
+    const selA = document.getElementById('selA');
+    const selB = document.getElementById('selB');
+    
+    MODELS.forEach(function(m, i) {
+      selA.insertAdjacentHTML('beforeend', '<option value="' + i + '">' + m.name + '</option>');
+      selB.insertAdjacentHTML('beforeend', '<option value="' + i + '">' + m.name + '</option>');
+    });
+    selA.value = "0";
+    selB.value = "9";
+
+    function cell(val, win) {
+      return '<div class="cc ' + (win ? 'win' : '') + '"><span class="v">' + val + '</span>' + (win ? '<span class="wintag">win</span>' : '') + '</div>';
+    }
+
+    function render() {
+      const a = MODELS[+selA.value];
+      const b = MODELS[+selB.value];
+      const rows = [
+        {lab:"Provider", a:a.prov, b:b.prov, cmp:null},
+        {lab:"Input / 1M", a:per1m(a.input), b:per1m(b.input), cmp: a.input < b.input ? 'a' : (b.input < a.input ? 'b' : null)},
+        {lab:"Output / 1M", a:per1m(a.output), b:per1m(b.output), cmp: a.output < b.output ? 'a' : (b.output < a.output ? 'b' : null)},
+        {lab:"Context", a:a.ctx, b:b.ctx, cmp: ctxNum(a.ctx) > ctxNum(b.ctx) ? 'a' : (ctxNum(b.ctx) > ctxNum(a.ctx) ? 'b' : null)},
+        {lab:"Max output", a:a.maxOut, b:b.maxOut, cmp:null},
+        {lab:"Speed", a:a.speedLabel, b:b.speedLabel, cmp: a.speed > b.speed ? 'a' : (b.speed > a.speed ? 'b' : null)},
+        {lab:"Best for", a:a.best, b:b.best, cmp:null}
+      ];
+      let html = '<div class="crow head"><div class="cc lab">&nbsp;</div><div class="cc head">' + a.name + '<span class="hp">' + a.prov + '</span></div><div class="cc head">' + b.name + '<span class="hp">' + b.prov + '</span></div></div>';
+      html += rows.map(function(r) {
+        return '<div class="crow"><div class="cc lab">' + r.lab + '</div>' + cell(r.a, r.cmp === 'a') + cell(r.b, r.cmp === 'b') + '</div>';
+      }).join('');
+      document.getElementById('ctable').innerHTML = html;
+    }
+
+    selA.addEventListener('change', render);
+    selB.addEventListener('change', render);
+    render();
+  </script>
+</BaseLayout>
+
+<style>
+  .chero{text-align:center;padding:60px 0 32px;}
+  .chero h1{font-size:clamp(32px,5vw,50px);letter-spacing:-.035em;line-height:1.04;}
+  .chero p{color:var(--muted);font-size:18px;margin-top:14px;}
+
+  .comparator{border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,.04);}
+  .picker{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;}
+  .selwrap label{display:block;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;}
+  select{width:100%;font-family:var(--sans);font-size:15px;font-weight:600;padding:13px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;color:var(--text);-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b6b7b' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+  select:focus{outline:none;border-color:var(--accent);}
+  .vs-pill{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:999px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;}
+
+  .ctable{margin-top:26px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .ctable .crow{display:grid;grid-template-columns:140px 1fr 1fr;border-bottom:1px solid var(--border);}
+  .ctable .crow:last-child{border-bottom:0;}
+  .ctable .crow.head{background:var(--surface);}
+  .ctable .cc{padding:14px 18px;font-size:14px;}
+  .ctable .cc.lab{color:var(--muted);font-weight:600;border-right:1px solid var(--border);}
+  .ctable .cc.head{font-weight:700;font-size:16px;}
+  .ctable .cc.head .hp{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .ctable .cc .v{font-family:var(--mono);}
+  .ctable .cc.win{background:var(--green-tint);}
+  .ctable .cc.win .v{color:var(--green);font-weight:700;}
+  .wintag{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-left:8px;}
+
+  section.sec{padding:64px 0;border-top:1px solid var(--border);}
+  .sec-head{margin-bottom:30px;}
+  .sec-head h2{font-size:clamp(24px,3.6vw,34px);letter-spacing:-.025em;}
+  .sec-head p{color:var(--muted);font-size:16px;margin-top:10px;}
+
+  .pairgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .pair{border:1px solid var(--border);border-radius:12px;padding:22px;transition:border-color .15s,box-shadow .15s,transform .15s;display:flex;flex-direction:column;}
+  .pair:hover{border-color:#d4d4d8;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px);}
+  .pair .pp{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.3;}
+  .pair .px{font-family:var(--mono);font-size:12px;color:var(--muted);margin:6px 0 16px;}
+  .pair .go{margin-top:auto;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .pair:hover .go{gap:9px;}
+
+  .uctable-wrap{border:1px solid var(--border);border-radius:12px;overflow-x:auto;}
+  table.uc{width:100%;border-collapse:collapse;font-size:14px;min-width:640px;}
+  table.uc th,table.uc td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--border);}
+  table.uc th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface);font-weight:600;}
+  table.uc tr:last-child td{border-bottom:0;}
+  table.uc tbody tr:hover{background:var(--surface);}
+  table.uc .usecase{font-weight:600;}
+  table.uc .best{font-family:var(--mono);font-weight:600;}
+  table.uc .price{font-family:var(--mono);color:var(--green);font-weight:600;}
+  table.uc .why{color:var(--muted);}
+
+  .ctasec{background:var(--accent-tint);text-align:center;padding:72px 0;border-top:1px solid var(--border);}
+  .ctasec h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.025em;}
+  .ctasec .cap{margin-top:16px;font-size:14px;color:var(--muted);font-family:var(--mono);}
+  .ctasec .btnrow{margin-top:26px;}
+
+  @media (max-width:760px){
+    .pairgrid{grid-template-columns:1fr;}
+    .picker{grid-template-columns:1fr;gap:12px;}
+    .vs-pill{margin:0 auto;}
+    .ctable .crow{grid-template-columns:110px 1fr 1fr;}
+  }
+</style>

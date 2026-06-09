@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const articles = {
+  'deepseek-v4-api-guide': {
+    title: 'DeepSeek V4 API Guide: Complete Setup 2026',
+    description: 'Complete guide to DeepSeek V4 API. Setup in 5 minutes, OpenAI SDK compatible.',
+    tag: 'Tutorial',
+    tagClass: 'tutorial',
+    date: 'May 28, 2026',
+    readTime: '8 min'
+  },
+  'cheapest-llm-api-2026': {
+    title: 'Cheapest LLM API in 2026 - Complete Price Comparison',
+    description: 'Find the cheapest LLM API in 2026. Compare DeepSeek, Qwen, GPT, Claude prices.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 8, 2026',
+    readTime: '6 min'
+  },
+  'chinese-ai-models': {
+    title: 'Chinese AI Models Compared: DeepSeek vs Qwen vs Doubao',
+    description: 'DeepSeek vs Qwen vs Doubao in 2026: price, quality, context and best use cases.',
+    tag: 'Comparison',
+    tagClass: 'comparison',
+    date: 'Jun 2, 2026',
+    readTime: '10 min'
+  },
+  'cut-ai-costs': {
+    title: 'How to Cut Your LLM API Costs by 80%',
+    description: 'Five proven tactics to reduce your LLM spend without sacrificing quality.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 3, 2026',
+    readTime: '7 min'
+  },
+  'openai-sdk-compatible': {
+    title: 'OpenAI SDK Compatible APIs: Full List 2026',
+    description: 'Every OpenAI SDK compatible LLM API in 2026. Use Claude, Gemini, DeepSeek and more.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 1, 2026',
+    readTime: '7 min'
+  },
+  'cheapest-llm-api': {
+    title: 'Cheapest LLM API 2026: Complete Price Comparison',
+    description: 'Every major LLM API ranked by real cost per 1M tokens.',
+    tag: 'Guide',
+    tagClass: 'guide',
+    date: 'Jun 4, 2026',
+    readTime: '6 min'
+  }
+};
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'deepseek-v4-api-guide' } },
+    { params: { slug: 'cheapest-llm-api-2026' } },
+    { params: { slug: 'chinese-ai-models' } },
+    { params: { slug: 'cut-ai-costs' } },
+    { params: { slug: 'openai-sdk-compatible' } },
+    { params: { slug: 'cheapest-llm-api' } }
+  ];
+}
+
+const slug = Astro.params.slug as keyof typeof articles;
+const article = articles[slug];
+---
+
+<BaseLayout title={`${article.title} | BurnCloud`} description={article.description}>
+  <Nav />
+  
+  <nav class="crumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/blog">Blog</a>
+      <span class="sep">/</span>
+      <span class="cur">{article.title.split(':')[0]}</span>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <article class="article">
+        <header>
+          <span class={`tag ${article.tagClass}`}>{article.tag}</span>
+          <h1>{article.title}</h1>
+          <div class="meta">
+            <span>{article.date}</span>
+            <span class="dot">·</span>
+            <span>{article.readTime} read</span>
+          </div>
+        </header>
+        
+        <div class="content">
+          <p class="lead">{article.description}</p>
+          
+          <h2>Overview</h2>
+          <p>This article covers everything you need to know about LLM APIs in 2026, including pricing comparisons, setup guides, and best practices.</p>
+          
+          <h2>Key Points</h2>
+          <ul>
+            <li>DeepSeek V4 Flash offers the best price/quality ratio at 0.14 USD per 1M tokens</li>
+            <li>All models are accessible through BurnCloud with a single API key</li>
+            <li>OpenAI SDK compatibility makes switching effortless</li>
+          </ul>
+          
+          <h2>Getting Started</h2>
+          <pre class="code" set:html={`import openai
+
+client = openai.OpenAI(
+    base_url="https://api.burncloud.com/v1",
+    api_key="your-burncloud-key"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-v4-flash",
+    messages=[{"role": "user", "content": "Hello"}]
+)`}></pre>
+        </div>
+        
+        <div class="cta-box">
+          <h3>Try BurnCloud Today</h3>
+          <p>One API key for every model. Start free.</p>
+          <a href="#" class="btn btn-primary">Get Started</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style is:inline>
+  .crumb{border-bottom:1px solid var(--border);background:var(--surface);}
+  .crumb .wrap{padding:12px 24px;font-size:13px;color:var(--muted);font-family:var(--mono);display:flex;gap:8px;align-items:center;}
+  .crumb a:hover{color:var(--text);}
+  .crumb .sep{opacity:.5;}
+  .crumb .cur{color:var(--text);}
+  
+  .article{padding:48px 0;max-width:720px;margin:0 auto;}
+  
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:999px;}
+  .tag.tutorial{color:#2563eb;background:#eff6ff;}
+  .tag.comparison{color:#7c3aed;background:#f5f3ff;}
+  .tag.guide{color:#16a34a;background:#f0fdf4;}
+  
+  .article h1{font-size:clamp(30px,4.4vw,42px);letter-spacing:-.035em;margin:16px 0 14px;line-height:1.1;}
+  .article .meta{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border);padding-bottom:24px;}
+  .article .meta .dot{opacity:.5;}
+  
+  .content{padding-top:32px;}
+  .content h2{font-size:24px;letter-spacing:-.025em;margin:48px 0 16px;}
+  .content p{font-size:17px;line-height:1.8;color:#2a2a33;}
+  .content p+p{margin-top:16px;}
+  .content ul{margin:16px 0;padding-left:24px;}
+  .content li{font-size:17px;line-height:1.7;color:#2a2a33;margin-bottom:8px;}
+  .content pre.code{background:var(--code-bg);padding:20px;border-radius:10px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.6;margin:20px 0;}
+  
+  .lead{font-size:19px;line-height:1.7;color:#2a2a33;}
+  
+  .cta-box{background:var(--accent-tint);border:1px solid #dfe3ff;border-radius:16px;padding:32px;text-align:center;margin-top:48px;}
+  .cta-box h3{font-size:22px;letter-spacing:-.02em;}
+  .cta-box p{font-family:var(--mono);font-size:13px;color:var(--muted);margin:12px 0 20px;}
+</style>
